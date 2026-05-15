@@ -1,0 +1,2738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TopLive — Your world, live.</title>
+<link rel="icon" type="image/png" href="logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700;800&family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TOPLIVE — STREAMING LANDING V2
+   Dark cinematic · #6445ED primary · #E94B3C LIVE pill
+   ============================================================ */
+
+:root {
+  /* Surfaces */
+  --bg-base: #0A0A12;
+  --bg-elev-1: #13131F;
+  --bg-elev-2: #1C1C2E;
+  --bg-elev-3: #25253A;
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.12);
+
+  /* Accents */
+  --primary: #6445ED;
+  --primary-bright: #7558ee;
+  --primary-glow: rgba(100, 69, 237, 0.32);
+  --primary-glow-soft: rgba(100, 69, 237, 0.16);
+  --primary-glow-faint: rgba(100, 69, 237, 0.06);
+  --accent-live: #34C759;
+  --accent-live-glow: rgba(52, 199, 89, 0.45);
+  --accent-warm: #FF6B35;
+  --accent-star: #FFB800;
+
+  /* Text */
+  --text-primary: #FFFFFF;
+  --text-secondary: #C8C8D8;
+  --text-muted: #8B8B9E;
+  --text-dim: #5A5A70;
+
+  /* Type */
+  --font-display: 'Wix Madefor Display', system-ui, sans-serif;
+  --font-body: 'Inter Tight', system-ui, sans-serif;
+}
+
+/* === RESET === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  position: relative;
+}
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
+img, svg { display: block; max-width: 100%; }
+
+/* Page-wide grain texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.6;
+  mix-blend-mode: overlay;
+}
+
+/* === LAYOUT === */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+section {
+  position: relative;
+  padding: 120px 0;
+}
+
+/* === GLOBAL TYPE === */
+.eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+.eyebrow.glow { color: var(--primary); }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--text-primary);
+}
+h1 {
+  font-size: clamp(48px, 7vw, 88px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+}
+h2 {
+  font-size: clamp(36px, 5vw, 64px);
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+}
+h3 {
+  font-size: 22px;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+.subhead {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  max-width: 540px;
+}
+.subhead.lg { font-size: 20px; }
+
+/* === BUTTONS === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 28px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+  white-space: nowrap;
+  letter-spacing: -0.005em;
+}
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 8px 24px var(--primary-glow-soft), inset 0 1px 0 rgba(255,255,255,0.16);
+}
+.btn-primary:hover {
+  background: var(--primary-bright);
+  box-shadow: 0 14px 32px var(--primary-glow), inset 0 1px 0 rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.04);
+  color: white;
+  border-color: var(--border-strong);
+  backdrop-filter: blur(8px);
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 10px 14px;
+  font-size: 14px;
+}
+.btn-ghost:hover { color: white; }
+
+.btn-icon-play::before {
+  content: '';
+  width: 0; height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid currentColor;
+  margin-right: 2px;
+}
+
+/* === LIVE PILL & VIEWER COUNT === */
+.live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-live);
+  color: white;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--accent-live-glow);
+}
+.live-pill::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  animation: livePulse 1.4s ease-in-out infinite;
+}
+@keyframes livePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+.viewer-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+.viewer-pill.primary {
+  background: var(--primary);
+  box-shadow: 0 4px 16px var(--primary-glow-soft);
+}
+
+/* === STREAM TILE === */
+.stream-tile {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #1f1f30 0%, #0c0c18 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  aspect-ratio: 9/16;
+}
+.stream-tile.glow {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 32px 70px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.stream-tile-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(36px, 6vw, 72px);
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5));
+}
+.stream-tile.bg-travel { background: radial-gradient(circle at 50% 40%, #2a1f4a 0%, #0c0a1c 100%); }
+.stream-tile.bg-cooking { background: radial-gradient(circle at 50% 40%, #3a2218 0%, #0e0a0c 100%); }
+.stream-tile.bg-gaming { background: radial-gradient(circle at 50% 40%, #1a2a4e 0%, #0a0c1c 100%); }
+.stream-tile.bg-music { background: radial-gradient(circle at 50% 40%, #2e1a3a 0%, #0c0a14 100%); }
+.stream-tile.bg-art { background: radial-gradient(circle at 50% 40%, #1e3a2e 0%, #0a0e10 100%); }
+.stream-tile.bg-fitness { background: radial-gradient(circle at 50% 40%, #3a2a18 0%, #0e0c0a 100%); }
+
+/* Image-backed tile (real iOS screens) */
+.stream-tile.has-image { background: #000; }
+.stream-tile.has-image > img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.stream-tile.has-image .stream-tile-bg,
+.stream-tile.has-image .stream-tile-ui { display: none; }
+.stream-tile.has-image .viewer-overlay {
+  position: absolute; top: 10px; right: 10px;
+  z-index: 2;
+}
+
+.stream-tile-ui {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 8px;
+}
+.stream-tile-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.stream-tile-reactions {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.reaction-dot {
+  width: 32px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.stream-tile-chat {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  max-width: 70%;
+}
+.chat-line {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  color: white;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  line-height: 1.2;
+}
+.stream-tile-caption {
+  padding-top: 6px;
+}
+.caption-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1px;
+}
+.caption-handle {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(10, 10, 18, 0.6);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: padding .2s ease;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: white;
+}
+.nav-brand img { width: 32px; height: 32px; border-radius: 8px; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: color .15s ease, background .15s ease;
+}
+.nav-links a:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.04);
+}
+.nav-cta { display: flex; gap: 8px; align-items: center; }
+
+@media (max-width: 880px) {
+  .nav-links { display: none; }
+}
+
+/* ============================================================
+   1 — HERO (with Stripe-style animated mesh gradient)
+   ============================================================ */
+.hero {
+  padding: 180px 0 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated mesh-gradient background */
+.hero-mesh {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.mesh-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+.mesh-orb-purple {
+  width: 640px; height: 640px;
+  top: -180px; left: -120px;
+  background: radial-gradient(circle, rgba(100, 69, 237, 0.85) 0%, rgba(100, 69, 237, 0) 65%);
+  animation: meshFloat1 22s ease-in-out infinite;
+}
+.mesh-orb-amber {
+  width: 520px; height: 520px;
+  top: 40%; left: 30%;
+  background: radial-gradient(circle, rgba(255, 195, 80, 0.55) 0%, rgba(255, 195, 80, 0) 65%);
+  animation: meshFloat2 26s ease-in-out infinite;
+  animation-delay: -8s;
+}
+.mesh-orb-magenta {
+  width: 560px; height: 560px;
+  top: -100px; right: -80px;
+  background: radial-gradient(circle, rgba(220, 90, 200, 0.6) 0%, rgba(220, 90, 200, 0) 65%);
+  animation: meshFloat3 28s ease-in-out infinite;
+  animation-delay: -4s;
+}
+.mesh-orb-indigo {
+  width: 480px; height: 480px;
+  bottom: -120px; left: 30%;
+  background: radial-gradient(circle, rgba(80, 100, 230, 0.55) 0%, rgba(80, 100, 230, 0) 65%);
+  animation: meshFloat1 24s ease-in-out infinite;
+  animation-delay: -14s;
+}
+.mesh-orb-gold {
+  width: 380px; height: 380px;
+  bottom: 0; right: 10%;
+  background: radial-gradient(circle, rgba(255, 220, 100, 0.4) 0%, rgba(255, 220, 100, 0) 65%);
+  animation: meshFloat2 30s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+@keyframes meshFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(120px, -60px) scale(1.12); }
+  66%       { transform: translate(-80px, 80px) scale(0.92); }
+}
+@keyframes meshFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-140px, 60px) scale(0.9); }
+  66%       { transform: translate(100px, -90px) scale(1.15); }
+}
+@keyframes meshFloat3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(60px, 120px) scale(1.1); }
+}
+
+/* Subtle grain layer ABOVE the mesh to keep cinematic-noise texture */
+.hero-mesh::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.55;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .mesh-orb { animation: none !important; }
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.hero-text h1 { margin-bottom: 28px; }
+.hero-text .subhead {
+  margin-bottom: 32px;
+  font-size: 19px;
+}
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 28px;
+}
+.hero-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  padding: 10px 16px;
+  border-radius: 100px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.hero-counter strong {
+  color: white;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  transition: color .25s ease;
+  display: inline-block;
+}
+.hero-counter strong.pill-bump {
+  animation: pillBump .55s ease-out;
+}
+@keyframes pillBump {
+  0%   { color: #fff; transform: translateY(0); }
+  30%  { color: var(--primary); transform: translateY(-1.5px); }
+  100% { color: #fff; transform: translateY(0); }
+}
+.hero-counter-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #2ecc71;
+  box-shadow: 0 0 12px #2ecc71;
+  animation: livePulse 1.6s ease-in-out infinite;
+}
+
+/* HERO VIDEO CAROUSEL — 5 tiles rotate through 5 slots every 5s
+   Slots: off-left → left → center → right → off-right → off-left ... */
+.hero-mosaic {
+  position: relative;
+  height: 600px;
+  perspective: 1600px;
+}
+.video-tile {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 280px;
+  height: 500px;
+  margin-top: -250px;
+  margin-left: -140px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  transition:
+    transform 1.1s cubic-bezier(.22, .9, .25, 1),
+    filter .9s ease,
+    opacity .9s ease,
+    width .9s cubic-bezier(.22, .9, .25, 1),
+    height .9s cubic-bezier(.22, .9, .25, 1),
+    margin .9s cubic-bezier(.22, .9, .25, 1),
+    box-shadow .6s ease;
+  will-change: transform, filter, opacity;
+}
+.video-tile video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* SLOT: CENTER (sharp, big, glow) */
+.video-tile.slot-center {
+  transform: translateZ(40px);
+  filter: none;
+  opacity: 1;
+  z-index: 5;
+  width: 280px;
+  height: 500px;
+  margin-top: -250px;
+  margin-left: -140px;
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* SLOT: LEFT (blurred, smaller, rotated) */
+.video-tile.slot-left {
+  transform: translateX(-170px) translateZ(-60px) rotate(-6deg) scale(.78);
+  filter: blur(8px) brightness(.55) saturate(.85);
+  opacity: 0.8;
+  z-index: 3;
+}
+
+/* SLOT: RIGHT */
+.video-tile.slot-right {
+  transform: translateX(170px) translateZ(-60px) rotate(6deg) scale(.78);
+  filter: blur(8px) brightness(.55) saturate(.85);
+  opacity: 0.8;
+  z-index: 3;
+}
+
+/* SLOT: OFF-LEFT (way out, hidden) — incoming next */
+.video-tile.slot-off-left {
+  transform: translateX(-360px) translateZ(-120px) rotate(-12deg) scale(.5);
+  filter: blur(14px) brightness(.4);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* SLOT: OFF-RIGHT (way out, hidden) */
+.video-tile.slot-off-right {
+  transform: translateX(360px) translateZ(-120px) rotate(12deg) scale(.5);
+  filter: blur(14px) brightness(.4);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Pills only visible inside center slot */
+.video-tile .live-pill,
+.video-tile .viewer-pill {
+  position: absolute;
+  top: 14px;
+  z-index: 6;
+  opacity: 0;
+  transition: opacity .35s ease .5s;
+  pointer-events: none;
+}
+.video-tile .live-pill { left: 14px; }
+.video-tile .viewer-pill { right: 14px; }
+.video-tile.slot-center .live-pill,
+.video-tile.slot-center .viewer-pill {
+  opacity: 1;
+}
+
+@media (max-width: 920px) {
+  .hero { padding: 140px 0 60px; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-mosaic { height: 480px; }
+  .video-tile { width: 220px; height: 400px; margin-top: -200px; margin-left: -110px; }
+  .video-tile.slot-center { width: 220px; height: 400px; margin-top: -200px; margin-left: -110px; }
+  .video-tile.slot-left { transform: translateX(-130px) translateZ(-60px) rotate(-6deg) scale(.7); }
+  .video-tile.slot-right { transform: translateX(130px) translateZ(-60px) rotate(6deg) scale(.7); }
+  .video-tile.slot-off-left { transform: translateX(-260px) rotate(-12deg) scale(.4); }
+  .video-tile.slot-off-right { transform: translateX(260px) rotate(12deg) scale(.4); }
+}
+
+/* ============================================================
+   2 — VALUE PROP (with subtle pattern + swiss stats row)
+   ============================================================ */
+.value-prop {
+  padding: 80px 0 120px;
+  position: relative;
+  overflow: hidden;
+}
+/* Dot grid pattern */
+.value-prop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(100, 69, 237, 0.18) 1px, transparent 1.5px);
+  background-size: 36px 36px;
+  background-position: 0 0;
+  opacity: 0.35;
+  mask-image: linear-gradient(180deg, transparent 0%, black 30%, black 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 30%, black 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+.value-prop::before {
+  content: '';
+  position: absolute;
+  bottom: -200px; right: 10%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, var(--primary-glow-faint) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+.value-prop-wrap {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px;
+  align-items: end;
+  position: relative;
+  z-index: 1;
+}
+.value-prop h2 { margin-bottom: 0; }
+.value-prop .subhead { font-size: 19px; }
+
+/* t1energy-style stats block: photo left, stacked numbers right */
+.stats-block {
+  margin-top: 96px;
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 80px;
+  align-items: stretch;
+  position: relative;
+  z-index: 1;
+}
+.stats-block-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.stats-block-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.stats-block-eyebrow::before {
+  content: '';
+  width: 8px; height: 8px;
+  background: var(--primary);
+  display: inline-block;
+}
+.stats-photo {
+  flex: 1;
+  min-height: 400px;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  background: var(--bg-elev-1);
+  box-shadow: 0 32px 60px rgba(0, 0, 0, 0.5);
+}
+.stats-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.stats-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(10, 10, 18, 0.4) 100%);
+}
+.stats-block-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+.stat-line {
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.stat-line:first-child { border-top: 1px solid rgba(255, 255, 255, 0.08); }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(64px, 9vw, 124px);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  color: white;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 14px;
+  transition: color .15s ease;
+  position: relative;
+  display: inline-block;
+}
+.stat-num.bump {
+  animation: numBump .55s cubic-bezier(.22, .9, .25, 1);
+}
+@keyframes numBump {
+  0%   { transform: translateY(0)   scale(1);    color: #fff; }
+  30%  { transform: translateY(-3px) scale(1.02); color: var(--primary); }
+  100% { transform: translateY(0)   scale(1);    color: #fff; }
+}
+.stat-num .bump-badge {
+  position: absolute;
+  top: -6px; right: -2px;
+  transform: translateX(100%);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--primary);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.stat-num .bump-badge.show {
+  animation: badgeRise 1.1s ease-out forwards;
+}
+@keyframes badgeRise {
+  0%   { opacity: 0; transform: translateX(100%) translateY(0);    }
+  18%  { opacity: 1; transform: translateX(100%) translateY(-8px); }
+  100% { opacity: 0; transform: translateX(100%) translateY(-36px);}
+}
+.stat-num .unit {
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+.stat-num .accent {
+  color: var(--primary);
+}
+.stat-label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+@media (max-width: 1000px) {
+  .stats-block { grid-template-columns: 1fr; gap: 48px; }
+  .stats-photo { min-height: 360px; }
+}
+@media (max-width: 880px) {
+  .value-prop-wrap { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* ============================================================
+   3 — WHY DIFFERENT (spotlight block · auto-rotate slides)
+   ============================================================ */
+.why-different { padding: 60px 0 120px; }
+.why-different-header { margin-bottom: 64px; max-width: 640px; }
+
+.why-spotlight {
+  position: relative;
+  height: 640px;
+  border-radius: 32px;
+  overflow: hidden;
+  background: var(--bg-elev-1);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+.why-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .9s ease;
+  pointer-events: none;
+}
+.why-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.why-slide-img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 4s ease;
+  transform: scale(1.04);
+}
+.why-slide.active .why-slide-img {
+  transform: scale(1);
+}
+.why-slide-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(100deg, rgba(10, 10, 18, 0.7) 0%, rgba(10, 10, 18, 0.4) 45%, rgba(10, 10, 18, 0.1) 70%, transparent 100%),
+    linear-gradient(180deg, rgba(10, 10, 18, 0.1) 0%, transparent 25%, transparent 70%, rgba(10, 10, 18, 0.5) 100%);
+  z-index: 2;
+}
+.why-slide-text {
+  position: absolute;
+  top: 72px; left: 64px;
+  z-index: 3;
+  max-width: 480px;
+  color: white;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: opacity .6s ease .2s, transform .8s cubic-bezier(.22, .9, .25, 1) .2s;
+}
+.why-slide.active .why-slide-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+.why-slide-text h3 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.04;
+  margin-bottom: 20px;
+  color: white;
+}
+.why-slide-text p {
+  font-size: 17px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 440px;
+}
+
+/* Pill switcher */
+.why-pills {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  gap: 4px;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 100px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+.why-pill {
+  position: relative;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.78);
+  padding: 12px 22px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: color .25s ease, background .25s ease;
+  z-index: 1;
+}
+.why-pill:hover { color: white; }
+.why-pill.active {
+  background: white;
+  color: #0a0a12;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Full-width progress bar at bottom of spotlight — auto-rotate timer */
+.why-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  z-index: 5;
+  overflow: hidden;
+}
+.why-progress-fill {
+  height: 100%;
+  width: 0;
+  background: var(--primary);
+  box-shadow: 0 0 12px rgba(100, 69, 237, 0.6);
+}
+.why-progress-fill.run {
+  width: 100%;
+  transition: width 3s linear;
+}
+
+@media (max-width: 880px) {
+  .why-spotlight { height: 540px; border-radius: 20px; }
+  .why-slide-text { top: 40px; left: 28px; right: 28px; }
+  .why-slide-text h3 { font-size: 32px; }
+  .why-slide-text p { font-size: 15px; }
+  .why-pills { padding: 4px; gap: 2px; }
+  .why-pill { padding: 10px 14px; font-size: 12px; }
+}
+
+/* ============================================================
+   4 — HOW IT WORKS (3 steps · vertical timeline)
+   ============================================================ */
+.how-it-works {
+  padding: 120px 0;
+  position: relative;
+}
+.how-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.how-header .subhead { margin: 0 auto; }
+.how-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 920px;
+  margin: 0 auto;
+  position: relative;
+}
+.how-step {
+  display: grid;
+  grid-template-columns: 80px 1fr 240px;
+  gap: 48px;
+  align-items: center;
+  padding: 48px 0;
+  position: relative;
+}
+
+/* Override parent .reveal — animation handled on sub-elements */
+.how-step.reveal { opacity: 1 !important; transform: none !important; transition: none; }
+
+/* Staggered entrance: number scale-in → text from left → mock from right */
+.how-step .how-num,
+.how-step .how-step-text,
+.how-step .how-step-mock {
+  opacity: 0;
+  transition: opacity .7s ease, transform .8s cubic-bezier(.22, .9, .25, 1);
+}
+.how-step .how-num { transform: scale(0.4); }
+.how-step .how-step-text { transform: translateX(-32px); }
+.how-step .how-step-mock { transform: translateX(40px) rotate(-3deg); }
+.how-step.visible .how-num { opacity: 1; transform: scale(1); transition-delay: 0ms; }
+.how-step.visible .how-step-text { opacity: 1; transform: translateX(0); transition-delay: 180ms; }
+.how-step.visible .how-step-mock { opacity: 1; transform: translateX(0) rotate(0); transition-delay: 320ms; }
+
+/* The connector line also fades in */
+.how-step:not(:last-child)::after {
+  opacity: 0;
+  transition: opacity .8s ease .6s;
+}
+.how-step.visible:not(:last-child)::after { opacity: 1; }
+.how-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 50%; bottom: -50%;
+  left: 39px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--primary) 0%, rgba(100, 69, 237, 0.1) 100%);
+}
+.how-step.reverse {
+  grid-template-columns: 80px 1fr 240px;
+}
+.how-step.reverse .how-step-mock { order: 0; }
+.how-num {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--bg-elev-1);
+  border: 2px solid var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--primary);
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 0 8px var(--bg-base), 0 0 32px var(--primary-glow-soft);
+}
+.how-step-text { padding-right: 24px; }
+.how-step-text h3 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.how-step-text p {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.55;
+  max-width: 380px;
+}
+.how-step-mock {
+  height: 460px;
+  width: 220px;
+  border-radius: 32px;
+  background: #000;
+  padding: 8px;
+  position: relative;
+  overflow: hidden;
+  margin-left: auto;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+.how-step-mock::before {
+  content: '';
+  position: absolute;
+  top: 14px; left: 50%;
+  transform: translateX(-50%);
+  width: 72px; height: 20px;
+  background: #000;
+  border-radius: 100px;
+  z-index: 5;
+}
+.how-step-img { background: #000; }
+.how-step-img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+  display: block;
+}
+.how-step-stack { background: #000; }
+.how-step-stack .mock-bg {
+  position: absolute;
+  inset: 8px;
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+  object-fit: cover;
+  border-radius: 24px;
+  filter: brightness(0.7);
+  display: block;
+}
+.how-step-stack .mock-sheet {
+  position: absolute;
+  bottom: 8px; left: 8px; right: 8px;
+  width: calc(100% - 16px);
+  height: 76%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 20px 20px 24px 24px;
+  display: block;
+  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.6);
+  z-index: 4;
+}
+
+/* Mini phone mock screens */
+.mock-screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #14141f 0%, #0a0a14 100%);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 11px;
+}
+.mock-screen .mock-status {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.mock-1 {
+  align-items: center;
+  justify-content: center;
+}
+.mock-1 .mock-logo {
+  width: 60px; height: 60px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent-live) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 900;
+  color: white;
+  margin: auto auto 12px;
+  font-family: var(--font-display);
+}
+.mock-1 h4 {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.mock-1 p {
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.mock-1 .mock-btn {
+  background: var(--primary);
+  color: white;
+  padding: 10px 0;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  margin: auto 0 8px;
+}
+
+.mock-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.mock-chip {
+  font-size: 10px;
+  padding: 5px 10px;
+  border-radius: 16px;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+}
+.mock-chip.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+.mock-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  flex: 1;
+}
+.mock-grid-tile {
+  border-radius: 8px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 8px;
+  position: relative;
+}
+.mock-grid-tile span:first-child {
+  background: var(--accent-live);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  align-self: flex-start;
+  font-size: 7px;
+}
+.mock-grid-tile span:last-child {
+  color: white;
+  font-weight: 600;
+}
+
+.mock-room {
+  background: radial-gradient(circle at 50% 30%, #2a1f4a 0%, #0c0a1c 100%);
+}
+.mock-room .stream-tile-ui { padding: 8px; }
+.mock-room .chat-line { font-size: 9px; padding: 4px 8px; }
+
+@media (max-width: 880px) {
+  .how-step { grid-template-columns: 60px 1fr; gap: 24px; }
+  .how-step-mock { display: none; }
+  .how-num { width: 60px; height: 60px; font-size: 24px; }
+  .how-step:not(:last-child)::after { left: 29px; }
+}
+
+/* ============================================================
+   5 — SAFETY (floating cards stage · scattered around center)
+   ============================================================ */
+.safety {
+  padding: 140px 0;
+  position: relative;
+  overflow: hidden;
+}
+.safety::before {
+  content: '';
+  position: absolute;
+  width: 800px; height: 500px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse, var(--primary-glow-faint) 0%, transparent 70%);
+  filter: blur(80px);
+  z-index: 0;
+}
+.safety-stage {
+  position: relative;
+  min-height: 720px;
+  margin-bottom: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.safety-content {
+  position: relative;
+  z-index: 5;
+  max-width: 580px;
+  text-align: center;
+  padding: 0 24px;
+}
+.safety-content h2 {
+  margin: 16px 0 24px;
+}
+.safety-content p {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+/* Floating cards */
+.float-card {
+  position: absolute;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  opacity: 0;
+  transition: opacity .9s ease, transform .9s cubic-bezier(.2, .8, .2, 1);
+  z-index: 2;
+}
+.float-card img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.float-card .live-pill {
+  position: absolute;
+  top: 10px; left: 10px;
+  z-index: 2;
+  font-size: 9px;
+  padding: 3px 8px;
+}
+.float-card .viewer-pill {
+  position: absolute;
+  top: 10px; right: 10px;
+  z-index: 2;
+  font-size: 9px;
+  padding: 3px 8px;
+}
+/* 6 cards in scattered asymmetric positions */
+.fc-1 { width: 140px; height: 200px; top: 4%; left: 4%;  transform: translate(-60px, -40px) rotate(-12deg) scale(.9); }
+.fc-2 { width: 170px; height: 230px; top: 0%;  right: 8%; transform: translate(80px, -50px) rotate(8deg) scale(.9); }
+.fc-3 { width: 200px; height: 270px; top: 38%; left: 0%;  transform: translate(-100px, 0) rotate(-6deg) scale(.92); }
+.fc-4 { width: 180px; height: 240px; top: 32%; right: 0%; transform: translate(110px, 20px) rotate(10deg) scale(.92); }
+.fc-5 { width: 150px; height: 210px; bottom: 4%; left: 14%; transform: translate(-50px, 70px) rotate(-9deg) scale(.9); }
+.fc-6 { width: 180px; height: 250px; bottom: 0%; right: 6%; transform: translate(80px, 80px) rotate(7deg) scale(.92); }
+
+.float-card.in {
+  opacity: 1;
+}
+.fc-1.in { transform: rotate(-8deg); }
+.fc-2.in { transform: rotate(6deg); }
+.fc-3.in { transform: rotate(-4deg); }
+.fc-4.in { transform: rotate(7deg); }
+.fc-5.in { transform: rotate(-6deg); }
+.fc-6.in { transform: rotate(5deg); }
+
+/* Hover lift */
+.float-card:hover {
+  z-index: 6;
+  box-shadow: 0 32px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+.fc-1.in:hover { transform: rotate(-8deg) translateY(-6px) scale(1.03); }
+.fc-2.in:hover { transform: rotate(6deg) translateY(-6px) scale(1.03); }
+.fc-3.in:hover { transform: rotate(-4deg) translateY(-6px) scale(1.03); }
+.fc-4.in:hover { transform: rotate(7deg) translateY(-6px) scale(1.03); }
+.fc-5.in:hover { transform: rotate(-6deg) translateY(-6px) scale(1.03); }
+.fc-6.in:hover { transform: rotate(5deg) translateY(-6px) scale(1.03); }
+
+@media (max-width: 880px) {
+  .safety-stage { min-height: 540px; }
+  .fc-1, .fc-2, .fc-3, .fc-4, .fc-5, .fc-6 {
+    width: 100px; height: 140px;
+  }
+  .fc-1 { top: 0%; left: 2%; }
+  .fc-2 { top: 0%; right: 2%; }
+  .fc-3 { top: 35%; left: 0; }
+  .fc-4 { top: 35%; right: 0; }
+  .fc-5 { bottom: 0; left: 8%; }
+  .fc-6 { bottom: 0; right: 6%; }
+}
+
+/* Safety section — 3 photo cards (Statsig-style, dark) */
+.safety-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.safety-card {
+  position: relative;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+.safety-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(100, 69, 237, 0.5);
+  box-shadow: 0 24px 50px rgba(100, 69, 237, 0.16);
+}
+.safety-card-img {
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+.safety-card-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .8s cubic-bezier(.22, .9, .25, 1);
+}
+.safety-card:hover .safety-card-img img {
+  transform: scale(1.04);
+}
+.safety-card-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(19, 19, 31, 0.5) 100%);
+}
+.safety-card-body {
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.safety-card-label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+.safety-card h4 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.18;
+  color: white;
+}
+.safety-card p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+@media (max-width: 880px) {
+  .safety-cards { grid-template-columns: 1fr; }
+}
+
+.safety-body {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 17px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+/* CTA placed off-center (brief: move button to differ from clone) */
+.safety-cta-row {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-right: 32px;
+}
+
+@media (max-width: 880px) {
+  .safety-carousel { gap: 8px; min-height: 440px; }
+  .phone { width: 180px; height: 380px; }
+  .phone-side { display: none; }
+  .safety-bullets { grid-template-columns: 1fr; gap: 12px; }
+  .safety-cta-row { justify-content: center; padding-right: 0; }
+}
+
+/* ============================================================
+   6 — PRO TIPS (4 colored circles on connector line)
+   ============================================================ */
+.pro-tips { padding: 120px 0; }
+.pro-tips-header {
+  text-align: center;
+  margin-bottom: 80px;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Pro Tips — Monday-style spotlight: top tabs + big photo card */
+.pro-tips-spotlight {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border-subtle);
+}
+.pro-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  padding: 28px 32px 0;
+  position: relative;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+.pro-tab {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 4px 0 24px;
+  background: none;
+  border: none;
+  color: white;
+  font-family: inherit;
+  cursor: pointer;
+  opacity: 0.42;
+  transition: opacity .25s ease;
+  position: relative;
+  text-align: left;
+}
+.pro-tab.active { opacity: 1; }
+.pro-tab:hover { opacity: 0.85; }
+.pro-tab.active:hover { opacity: 1; }
+.pro-tab .icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+}
+.pro-tab .icon-box svg {
+  width: 24px;
+  height: 24px;
+}
+.pro-tab-label {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: white;
+}
+.pro-tab.active .pro-tab-label { color: var(--primary); }
+
+.pro-tab-bar {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 24px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+.pro-tab-bar-fill {
+  height: 100%;
+  width: 0;
+  background: var(--primary);
+  box-shadow: 0 0 8px rgba(100, 69, 237, 0.6);
+}
+.pro-tab.active .pro-tab-bar-fill.run {
+  width: 100%;
+  transition: width 3s linear;
+}
+
+.pro-card-stage {
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+}
+.pro-card {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity .8s ease, transform .9s cubic-bezier(.22, .9, .25, 1);
+  pointer-events: none;
+}
+.pro-card.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+.pro-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.pro-card-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(85deg, rgba(10, 10, 18, 0.78) 0%, rgba(10, 10, 18, 0.5) 35%, rgba(10, 10, 18, 0.2) 60%, transparent 85%),
+    linear-gradient(180deg, transparent 50%, rgba(10, 10, 18, 0.5) 100%);
+  z-index: 2;
+}
+.pro-card-text {
+  position: absolute;
+  bottom: 56px;
+  left: 56px;
+  z-index: 3;
+  max-width: 460px;
+  color: white;
+}
+.pro-card-text h4 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.4vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  line-height: 1.06;
+  margin-bottom: 14px;
+  color: white;
+}
+.pro-card-text p {
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+@media (max-width: 880px) {
+  .pro-tabs { grid-template-columns: repeat(4, 1fr); padding: 20px 16px 0; gap: 8px; }
+  .pro-tab { gap: 8px; padding-bottom: 16px; }
+  .pro-tab .icon-box { width: 36px; height: 36px; border-radius: 10px; }
+  .pro-tab .icon-box svg { width: 18px; height: 18px; }
+  .pro-tab-label { font-size: 10px; letter-spacing: 0.08em; }
+  .pro-card-stage { height: 380px; }
+  .pro-card-text { bottom: 28px; left: 24px; right: 24px; }
+  .pro-card-text h4 { font-size: 26px; }
+  .pro-card-text p { font-size: 14px; }
+}
+.icon-box {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background .2s ease, border-color .2s ease;
+}
+.icon-box svg {
+  width: 28px;
+  height: 28px;
+  fill: white;
+  display: block;
+}
+.pro-tab.active .icon-box {
+  background: rgba(100, 69, 237, 0.2);
+  border-color: rgba(100, 69, 237, 0.5);
+}
+
+/* ============================================================
+   7 — FAQ + TESTIMONIALS
+   ============================================================ */
+.faq-section {
+  padding: 120px 0;
+  position: relative;
+}
+.faq-header { margin-bottom: 64px; max-width: 640px; }
+
+.testimonials {
+  margin-bottom: 96px;
+}
+.testimonials-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding: 8px 0 24px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.testimonials-track::-webkit-scrollbar { display: none; }
+.testimonial {
+  flex: 0 0 380px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: 24px;
+  padding: 36px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 320px;
+  position: relative;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.testimonial.active {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, #1a1a28 0%, #13131F 100%);
+}
+.testimonial.active::before {
+  content: '● FEATURED';
+  position: absolute;
+  top: 20px; right: 20px;
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--accent-star);
+}
+.testimonial-stars {
+  display: flex;
+  gap: 4px;
+  font-size: 14px;
+  color: var(--accent-star);
+  letter-spacing: 0.04em;
+}
+.testimonial-quote {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: white;
+  position: relative;
+}
+.testimonial-quote::before {
+  content: '\201C';
+  position: absolute;
+  left: -16px;
+  top: -6px;
+  color: var(--primary);
+  font-size: 28px;
+}
+.testimonial-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+}
+.avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: var(--bg-elev-2);
+  position: relative;
+}
+.avatar img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.testimonial-meta {
+  flex: 1;
+  min-width: 0;
+}
+.testimonial-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: white;
+  margin-bottom: 2px;
+}
+.testimonial-role {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.testimonial-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: rgba(100, 69, 237, 0.18);
+  color: var(--primary);
+  border: 1px solid rgba(100, 69, 237, 0.32);
+}
+
+/* FAQ accordion */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+}
+.faq-item {
+  border-top: 1px solid var(--border-subtle);
+  padding: 0;
+}
+.faq-item:last-child { border-bottom: 1px solid var(--border-subtle); }
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 28px 24px 28px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: white;
+  transition: color .15s ease;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { color: var(--primary); }
+.faq-item summary::after {
+  content: '+';
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--primary);
+  transition: transform .25s ease;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p {
+  padding: 0 80px 28px 0;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+@media (max-width: 720px) {
+  .testimonial { flex-basis: 320px; padding: 28px; }
+  .faq-item summary { font-size: 16px; }
+}
+
+/* ============================================================
+   8 — FINAL CTA
+   ============================================================ */
+.final-cta {
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+.final-cta-inner {
+  position: relative;
+  padding: 140px 32px;
+  text-align: center;
+  border-radius: 32px;
+  overflow: hidden;
+  margin: 0 32px;
+  background: var(--bg-elev-1);
+}
+.final-cta-bg {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 12px;
+  padding: 12px;
+  filter: blur(0.3px);
+}
+.final-cta-bg .stream-tile {
+  border-radius: 12px;
+  min-height: 0;
+  aspect-ratio: auto;
+  filter: brightness(1.25) saturate(1.15) contrast(1.05);
+}
+.final-cta-bg .stream-tile-bg { font-size: 36px; opacity: 0.9; }
+.final-cta-bg .stream-tile-ui { padding: 6px; }
+.final-cta-bg .live-pill { font-size: 8px; padding: 2px 6px; }
+.final-cta-bg .live-pill::before { width: 4px; height: 4px; }
+.final-cta-bg .viewer-pill { font-size: 8px; padding: 2px 6px; }
+.final-cta-bg .stream-tile-chat, .final-cta-bg .stream-tile-reactions, .final-cta-bg .stream-tile-caption { display: none; }
+.final-cta-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 48% 52% at 50% 50%, rgba(10, 10, 18, 0.95) 0%, rgba(10, 10, 18, 0.82) 35%, rgba(10, 10, 18, 0.5) 72%, rgba(10, 10, 18, 0.32) 100%);
+}
+.final-cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.final-cta-content h2 {
+  font-size: clamp(40px, 6vw, 72px);
+  margin-bottom: 24px;
+}
+.final-cta-content p {
+  font-size: 19px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 36px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 720px) {
+  .final-cta-inner { margin: 0 16px; padding: 80px 24px; }
+  .final-cta-bg { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  padding: 80px 0 40px;
+  border-top: 1px solid var(--border-subtle);
+  position: relative;
+  z-index: 2;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(4, 1fr);
+  gap: 48px;
+  margin-bottom: 64px;
+}
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.footer-brand .nav-brand { font-size: 20px; }
+.footer-brand p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  max-width: 280px;
+}
+.footer-col h5 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col li a {
+  font-size: 14px;
+  color: var(--text-secondary);
+  transition: color .15s ease;
+}
+.footer-col li a:hover { color: white; }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 28px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.footer-social { display: flex; gap: 12px; }
+.footer-social a {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: var(--text-secondary);
+  transition: border-color .15s, color .15s;
+}
+.footer-social a:hover { border-color: var(--primary); color: white; }
+
+@media (max-width: 880px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 16px; }
+}
+
+/* ============================================================
+   FADE-IN ON SCROLL
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- =========================================================
+     NAVBAR
+     ========================================================= -->
+<nav class="navbar">
+  <a href="#" class="nav-brand">
+    <img src="logo-mark.png" alt="">
+    TopLive
+  </a>
+  <div class="nav-links">
+    <a href="#why">Discover</a>
+    <a href="#how">How it works</a>
+    <a href="#safety">Safety</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <div class="nav-cta">
+    <button class="btn btn-ghost">Log In</button>
+    <button class="btn btn-primary" style="padding: 10px 18px; font-size: 14px; border-radius: 10px;">Join TopLive</button>
+  </div>
+</nav>
+
+<!-- =========================================================
+     1 — HERO
+     ========================================================= -->
+<section class="hero">
+  <div class="hero-mesh" aria-hidden="true">
+    <div class="mesh-orb mesh-orb-purple"></div>
+    <div class="mesh-orb mesh-orb-amber"></div>
+    <div class="mesh-orb mesh-orb-magenta"></div>
+    <div class="mesh-orb mesh-orb-indigo"></div>
+    <div class="mesh-orb mesh-orb-gold"></div>
+  </div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="eyebrow glow">Discover · Watch · Go Live</span>
+        <h1>Your world,<br>live.</h1>
+        <p class="subhead">Meet real people, discover new interests, and share your moments live. TopLive is where social feels alive.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary">Join TopLive</button>
+          <button class="btn btn-secondary btn-icon-play">Watch Live Now</button>
+        </div>
+        <div class="hero-counter">
+          <span class="hero-counter-dot"></span>
+          <strong class="live-counter-val">40,046</strong> people live right now
+        </div>
+      </div>
+
+      <!-- HERO VIDEO CAROUSEL: 5 tiles rotate through 5 slots every 5s -->
+      <div class="hero-mosaic">
+        <div class="video-tile slot-off-left">
+          <video src="videos/video-1.mp4" autoplay muted loop playsinline preload="auto"></video>
+          <span class="live-pill">LIVE</span>
+          <span class="viewer-pill primary">2.1k</span>
+        </div>
+        <div class="video-tile slot-left">
+          <video src="videos/video-2.mp4" autoplay muted loop playsinline preload="auto"></video>
+          <span class="live-pill">LIVE</span>
+          <span class="viewer-pill primary">2.1k</span>
+        </div>
+        <div class="video-tile slot-center">
+          <video src="videos/video-3.mp4" autoplay muted loop playsinline preload="auto"></video>
+          <span class="live-pill">LIVE</span>
+          <span class="viewer-pill primary">2.1k</span>
+        </div>
+        <div class="video-tile slot-right">
+          <video src="videos/video-4.mp4" autoplay muted loop playsinline preload="auto"></video>
+          <span class="live-pill">LIVE</span>
+          <span class="viewer-pill primary">2.1k</span>
+        </div>
+        <div class="video-tile slot-off-right">
+          <video src="videos/video-5.mp4" autoplay muted loop playsinline preload="auto"></video>
+          <span class="live-pill">LIVE</span>
+          <span class="viewer-pill primary">2.1k</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     2 — VALUE PROP + SWISS STATS ROW
+     ========================================================= -->
+<section class="value-prop">
+  <div class="container">
+    <div class="value-prop-wrap reveal">
+      <h2>More than a feed.<br>More than a follow.</h2>
+      <p class="subhead lg">TopLive brings social back to real time. Watch people share what they love, join the conversation, or go live yourself — no followers required to start.</p>
+    </div>
+
+    <div class="stats-block reveal">
+      <div class="stats-block-left">
+        <div class="stats-block-eyebrow">By the numbers · 2026</div>
+        <div class="stats-photo"><img src="group-7.jpg" alt=""></div>
+      </div>
+      <div class="stats-block-right">
+        <div class="stat-line">
+          <div class="stat-num" id="live-counter">40,046</div>
+          <div class="stat-label">Live right now</div>
+        </div>
+        <div class="stat-line">
+          <div class="stat-num">4.2<span class="unit accent">M</span></div>
+          <div class="stat-label">Community members worldwide</div>
+        </div>
+        <div class="stat-line">
+          <div class="stat-num">120<span class="unit accent">+</span></div>
+          <div class="stat-label">Countries streaming live</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     3 — WHY TOPLIVE HITS DIFFERENT (4 cards · diagonal stagger)
+     ========================================================= -->
+<section class="why-different" id="why">
+  <div class="container">
+    <div class="why-different-header reveal">
+      <span class="eyebrow">Why TopLive hits different</span>
+      <h2>Built for the moment, not the algorithm.</h2>
+    </div>
+    <div class="why-spotlight reveal">
+      <div class="why-slide active" data-slide="0">
+        <img src="group-1.jpg" alt="" class="why-slide-img">
+        <div class="why-slide-overlay"></div>
+        <div class="why-slide-text">
+          <h3>Find your people instantly.</h3>
+          <p>Browse live streams by interest. Music, travel, cooking, gaming, art — jump into a room where something is happening right now.</p>
+        </div>
+      </div>
+      <div class="why-slide" data-slide="1">
+        <img src="group-7.jpg" alt="" class="why-slide-img">
+        <div class="why-slide-overlay"></div>
+        <div class="why-slide-text">
+          <h3>Built for real connection.</h3>
+          <p>A clean, fast interface designed to get out of the way and let the moment happen. No noise, no clutter — just the room and the people in it.</p>
+        </div>
+      </div>
+      <div class="why-slide" data-slide="2">
+        <img src="theme-5.jpg" alt="" class="why-slide-img">
+        <div class="why-slide-overlay"></div>
+        <div class="why-slide-text">
+          <h3>Live, not edited.</h3>
+          <p>No filters, no scripts. Just real people sharing real moments as they happen — the kind you'd never catch on a recorded feed.</p>
+        </div>
+      </div>
+      <div class="why-slide" data-slide="3">
+        <img src="group-3.jpg" alt="" class="why-slide-img">
+        <div class="why-slide-overlay"></div>
+        <div class="why-slide-text">
+          <h3>Something for everyone.</h3>
+          <p>Music, travel, cooking, gaming, art — follow creators or discover something new every day. The world is streaming, and you're invited.</p>
+        </div>
+      </div>
+
+      <div class="why-pills">
+        <button class="why-pill active" data-target="0">Discover</button>
+        <button class="why-pill" data-target="1">Connect</button>
+        <button class="why-pill" data-target="2">Live</button>
+        <button class="why-pill" data-target="3">Everyone</button>
+      </div>
+
+      <div class="why-progress"><div class="why-progress-fill"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     4 — HOW IT WORKS (3 steps · vertical timeline)
+     ========================================================= -->
+<section class="how-it-works" id="how">
+  <div class="container">
+    <div class="how-header reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>Three steps. Zero friction.</h2>
+      <p class="subhead">From signup to first stream in under a minute.</p>
+    </div>
+    <div class="how-steps">
+
+      <!-- Step 1 -->
+      <div class="how-step reveal">
+        <div class="how-num">1</div>
+        <div class="how-step-text">
+          <h3>Join in seconds</h3>
+          <p>One screen, one tap. Pick a username, add a photo if you want, and you're in. No profile setup ritual, no friend-import dance.</p>
+        </div>
+        <div class="how-step-mock how-step-img">
+          <img src="step-1-signin.png" alt="">
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="how-step reveal">
+        <div class="how-num">2</div>
+        <div class="how-step-text">
+          <h3>Choose what interests you</h3>
+          <p>Pick a few topics — travel, music, cooking, gaming — and we'll surface streams worth your time. No following anyone, no algorithm to feed.</p>
+        </div>
+        <div class="how-step-mock how-step-img how-step-stack">
+          <img src="step-1-signin.png" alt="" class="mock-bg">
+          <img src="step-2-interests.png" alt="" class="mock-sheet">
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="how-step reveal">
+        <div class="how-num">3</div>
+        <div class="how-step-text">
+          <h3>Watch, chat, or go live</h3>
+          <p>Drop into a stream and start chatting. Or hit the Live button, pick your topic, and start sharing — no audience required to begin.</p>
+        </div>
+        <div class="how-step-mock how-step-img">
+          <img src="step-3-stream.png" alt="">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     5 — SAFETY (floating cards · scattered around centre)
+     ========================================================= -->
+<section class="safety" id="safety">
+  <div class="container">
+
+    <div class="safety-stage">
+      <div class="float-card fc-1"><img src="person-3.jpg" alt=""><span class="live-pill">LIVE</span><span class="viewer-pill">312</span></div>
+      <div class="float-card fc-2"><img src="person-5.jpg" alt=""><span class="live-pill">LIVE</span><span class="viewer-pill">1.4k</span></div>
+      <div class="float-card fc-3"><img src="person-1.jpg" alt=""><span class="live-pill">LIVE</span><span class="viewer-pill">2.1k</span></div>
+      <div class="float-card fc-4"><img src="person-2.jpg" alt=""><span class="live-pill">LIVE</span><span class="viewer-pill">847</span></div>
+      <div class="float-card fc-5"><img src="person-11.jpg" alt=""><span class="live-pill">LIVE</span><span class="viewer-pill">528</span></div>
+      <div class="float-card fc-6"><img src="person-4.jpg" alt=""><span class="live-pill">LIVE</span><span class="viewer-pill">974</span></div>
+
+      <div class="safety-content reveal">
+        <span class="eyebrow">Good vibes, responsibly</span>
+        <h2>A space that takes care of you.</h2>
+        <p>Whether you're watching or streaming, you're in control. We combine active moderation with simple privacy tools so every experience feels safe.</p>
+        <button class="btn btn-primary">Join TopLive</button>
+      </div>
+    </div>
+
+    <div class="safety-cards reveal">
+      <div class="safety-card">
+        <div class="safety-card-img"><img src="theme-9.jpg" alt=""></div>
+        <div class="safety-card-body">
+          <div class="safety-card-label">Trust & Safety</div>
+          <h4>Real people, real moderation</h4>
+          <p>Trained humans review reports — not just algorithms. Action is taken in minutes, not days.</p>
+        </div>
+      </div>
+      <div class="safety-card">
+        <div class="safety-card-img"><img src="person-7.jpg" alt=""></div>
+        <div class="safety-card-body">
+          <div class="safety-card-label">Privacy</div>
+          <h4>Your privacy, your rules</h4>
+          <p>Granular controls for who sees you, who can DM, and what shows up in your discovery feed.</p>
+        </div>
+      </div>
+      <div class="safety-card">
+        <div class="safety-card-img"><img src="group-1.jpg" alt=""></div>
+        <div class="safety-card-body">
+          <div class="safety-card-label">Community</div>
+          <h4>Clear community standards</h4>
+          <p>The rules are written in plain language. No surprises, no shadow bans — what we expect is what you'll see.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     6 — PRO TIPS (4 colored nodes on connector line)
+     ========================================================= -->
+<section class="pro-tips">
+  <div class="container">
+    <div class="pro-tips-header reveal">
+      <span class="eyebrow">Pro tips for standout streams</span>
+      <h2>Get the most out of TopLive.</h2>
+      <p class="subhead">A few small things make a big difference — whether you're watching or sharing for the first time.</p>
+    </div>
+
+    <div class="pro-tips-spotlight reveal">
+      <div class="pro-tabs">
+        <button class="pro-tab active" data-target="0">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></svg>
+          </div>
+          <span class="pro-tab-label">01 / LIGHTING</span>
+          <div class="pro-tab-bar"><div class="pro-tab-bar-fill"></div></div>
+        </button>
+        <button class="pro-tab" data-target="1">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/></svg>
+          </div>
+          <span class="pro-tab-label">02 / AUDIO</span>
+          <div class="pro-tab-bar"><div class="pro-tab-bar-fill"></div></div>
+        </button>
+        <button class="pro-tab" data-target="2">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+          </div>
+          <span class="pro-tab-label">03 / CHAT</span>
+          <div class="pro-tab-bar"><div class="pro-tab-bar-fill"></div></div>
+        </button>
+        <button class="pro-tab" data-target="3">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+          </div>
+          <span class="pro-tab-label">04 / TOPICS</span>
+          <div class="pro-tab-bar"><div class="pro-tab-bar-fill"></div></div>
+        </button>
+      </div>
+
+      <div class="pro-card-stage">
+        <div class="pro-card active" data-slide="0">
+          <img class="pro-card-img" src="tip-10.jpg" alt="">
+          <div class="pro-card-overlay"></div>
+          <div class="pro-card-text">
+            <h4>Set the mood with good lighting</h4>
+            <p>Good light makes everything feel warmer and more alive — face the window, not your back to it.</p>
+          </div>
+        </div>
+        <div class="pro-card" data-slide="1">
+          <img class="pro-card-img" src="tip-2.jpg" alt="">
+          <div class="pro-card-overlay"></div>
+          <div class="pro-card-text">
+            <h4>Clear sound, clear vibe</h4>
+            <p>Your voice is the main instrument — make sure it cuts through whatever's around you.</p>
+          </div>
+        </div>
+        <div class="pro-card" data-slide="2">
+          <img class="pro-card-img" src="tip-3.jpg" alt="">
+          <div class="pro-card-overlay"></div>
+          <div class="pro-card-text">
+            <h4>Talk to the room</h4>
+            <p>Read names, react live — that's what separates streams from videos. The chat is the show.</p>
+          </div>
+        </div>
+        <div class="pro-card" data-slide="3">
+          <img class="pro-card-img" src="group-3.jpg" alt="">
+          <div class="pro-card-overlay"></div>
+          <div class="pro-card-text">
+            <h4>Pick your topic and be found</h4>
+            <p>Tag your stream so people who are already looking for what you do can actually find you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     7 — FAQ + TESTIMONIALS
+     ========================================================= -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="faq-header reveal">
+      <span class="eyebrow">Questions, answered</span>
+      <h2>What people say about TopLive.</h2>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="testimonials">
+      <div class="testimonials-track">
+        <div class="testimonial reveal">
+          <div class="testimonial-stars">★ ★ ★ ★ ★</div>
+          <p class="testimonial-quote">I came here just to watch cooking streams. Two weeks later I started my own. Didn't expect that at all.</p>
+          <div class="testimonial-footer">
+            <div class="avatar"><img src="person-1.jpg" alt=""></div>
+            <div class="testimonial-meta">
+              <div class="testimonial-name">Maria K.</div>
+              <div class="testimonial-role">Started as a viewer</div>
+            </div>
+            <span class="testimonial-tag">Viewer → Creator</span>
+          </div>
+        </div>
+
+        <div class="testimonial active reveal">
+          <div class="testimonial-stars">★ ★ ★ ★ ★</div>
+          <p class="testimonial-quote">The chat feels alive. People actually respond, ask questions, share stuff back. It's not like watching a video — it's a real conversation.</p>
+          <div class="testimonial-footer">
+            <div class="avatar"><img src="person-2.jpg" alt=""></div>
+            <div class="testimonial-meta">
+              <div class="testimonial-name">Daniel S.</div>
+              <div class="testimonial-role">Music streamer · 3 mo on TopLive</div>
+            </div>
+            <span class="testimonial-tag">Creator</span>
+          </div>
+        </div>
+
+        <div class="testimonial reveal">
+          <div class="testimonial-stars">★ ★ ★ ★ ★</div>
+          <p class="testimonial-quote">I leave TopLive open on my second monitor while I work. Someone's always doing something interesting — it's a window into other people's days.</p>
+          <div class="testimonial-footer">
+            <div class="avatar"><img src="person-10.jpg" alt=""></div>
+            <div class="testimonial-meta">
+              <div class="testimonial-name">Sam T.</div>
+              <div class="testimonial-role">Daily viewer · joined Mar 2026</div>
+            </div>
+            <span class="testimonial-tag">Viewer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ accordion -->
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>What is TopLive?</summary>
+        <p>TopLive is a social platform built around live video. Watch people share their hobbies and passions in real time, join the chat, or go live yourself — it's a community for both viewers and creators.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How do I watch a live stream?</summary>
+        <p>Open TopLive, browse by topic or explore what's trending, and tap any stream to join. No account needed to watch.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is TopLive free?</summary>
+        <p>Yes — watching and going live are both free.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How do I find streams I'll like?</summary>
+        <p>Browse by topic, follow people whose content you enjoy, or let TopLive suggest streams based on what you watch.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What devices are supported?</summary>
+        <p>TopLive works on iOS, Android, and any modern desktop browser — your account follows you across all of them.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How is my privacy protected?</summary>
+        <p>You control who sees you, who can message you, and what appears in your feed. Sensitive data is encrypted, and we never sell personal information to third parties.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How is the platform moderated?</summary>
+        <p>A combination of active human moderators, automated systems for the obvious stuff, and clear community standards. Reports are reviewed within minutes during peak hours.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I go live too?</summary>
+        <p>Absolutely. Going live takes seconds — just tap the Live button, choose your topic, and start sharing. No experience needed.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     8 — FINAL CTA (full-bleed mosaic)
+     ========================================================= -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <!-- Background mosaic — 16 placeholder photos -->
+    <div class="final-cta-bg">
+      <div class="stream-tile has-image"><img src="person-1.jpg" alt=""></div>
+      <div class="stream-tile has-image"><img src="person-2.jpg" alt=""></div>
+      <div class="stream-tile has-image"><img src="person-3.jpg" alt=""></div>
+      <div class="stream-tile has-image"><img src="person-4.jpg" alt=""></div>
+      <div class="stream-tile has-image"><img src="person-5.jpg" alt=""></div>
+      <div class="stream-tile has-image"><img src="person-6.jpg" alt=""></div>
+      <div class="stream-tile has-image"><img src="person-7.jpg" alt=""></div>
+      <div class="stream-tile has-image"><img src="person-8.jpg" alt=""></div>
+      <div class="stream-tile has-image"><img src="person-9.jpg" alt=""></div>
+      <div class="stream-tile has-image"><img src="person-10.jpg" alt=""></div>
+      <div class="stream-tile has-image"><img src="person-11.jpg" alt=""></div>
+      <div class="stream-tile has-image"><img src="person-12.jpg" alt=""></div>
+      <div class="stream-tile has-image"><img src="person-4.jpg" alt=""></div>
+      <div class="stream-tile has-image"><img src="person-7.jpg" alt=""></div>
+      <div class="stream-tile has-image"><img src="person-2.jpg" alt=""></div>
+      <div class="stream-tile has-image"><img src="person-11.jpg" alt=""></div>
+    </div>
+    <div class="final-cta-overlay"></div>
+    <div class="final-cta-content">
+      <span class="eyebrow glow">Join the moment</span>
+      <h2>Ready to find your people?</h2>
+      <p>Whether you're here to watch, chat, or share — there's a place for you on TopLive. Join thousands of real people, live right now.</p>
+      <button class="btn btn-primary" style="padding: 18px 36px; font-size: 16px;">Join TopLive</button>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-brand">
+          <img src="logo-mark.png" alt="">
+          TopLive
+        </a>
+        <p>The social platform built around live video. Watch, chat, or go live — it's a community for everyone.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Safety</h5>
+        <ul>
+          <li><a href="#">Community Guidelines</a></li>
+          <li><a href="#">Stream Rules</a></li>
+          <li><a href="#">Reports & Complaints</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Creator Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 TopLive. All rights reserved.</span>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">◐</a>
+        <a href="#" aria-label="TikTok">♫</a>
+        <a href="#" aria-label="X">𝕏</a>
+        <a href="#" aria-label="YouTube">▶</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Reveal-on-scroll
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -80px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Floating cards fly-in (staggered)
+const ioCards = new IntersectionObserver((entries) => {
+  entries.forEach((e, idx) => {
+    if (e.isIntersecting) {
+      const order = parseInt(e.target.dataset.order || idx);
+      setTimeout(() => e.target.classList.add('in'), order * 120);
+      ioCards.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.float-card').forEach((el, i) => {
+  el.dataset.order = i;
+  ioCards.observe(el);
+});
+
+// Hero video carousel — 5 tiles rotate through 5 slots every 5s
+// No src swap, no opacity hack — pure CSS transform/filter transitions
+(() => {
+  const tiles = Array.from(document.querySelectorAll('.hero-mosaic .video-tile'));
+  if (!tiles.length) return;
+
+  // Slot order in carousel: off-left → left → center → right → off-right → (wrap to off-left)
+  const slotCycle = ['off-left', 'left', 'center', 'right', 'off-right'];
+
+  function getSlot(tile) {
+    return slotCycle.find(s => tile.classList.contains(`slot-${s}`));
+  }
+  function nextSlot(slot) {
+    const i = slotCycle.indexOf(slot);
+    return slotCycle[(i + 1) % slotCycle.length];
+  }
+
+  function rotate() {
+    // Shift each tile to its next slot in the cycle
+    tiles.forEach(tile => {
+      const cur = getSlot(tile);
+      const nxt = nextSlot(cur);
+      tile.classList.remove(`slot-${cur}`);
+      tile.classList.add(`slot-${nxt}`);
+    });
+  }
+
+  // Ensure videos are playing (some browsers block until user gesture, retry quietly)
+  tiles.forEach(t => {
+    const v = t.querySelector('video');
+    if (v) v.play().catch(() => {});
+  });
+
+  let timer = setInterval(rotate, 5000);
+
+  // Pause rotation when carousel is offscreen (saves CPU)
+  const heroMosaic = document.querySelector('.hero-mosaic');
+  if (heroMosaic) {
+    const io3 = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          if (!timer) timer = setInterval(rotate, 5000);
+          tiles.forEach(t => t.querySelector('video')?.play().catch(()=>{}));
+        } else {
+          if (timer) { clearInterval(timer); timer = null; }
+        }
+      });
+    }, { threshold: 0.2 });
+    io3.observe(heroMosaic);
+  }
+})();
+
+// Pro Tips spotlight — Monday-style top tabs + slide cards, 3s auto-rotate
+(() => {
+  const tabs = document.querySelectorAll('.pro-tab');
+  const cards = document.querySelectorAll('.pro-card');
+  if (!tabs.length || !cards.length) return;
+  let idx = 0;
+  let timer = null;
+
+  function restartActiveBar() {
+    tabs.forEach((tab, i) => {
+      const fill = tab.querySelector('.pro-tab-bar-fill');
+      if (!fill) return;
+      fill.classList.remove('run');
+      fill.style.width = '0';
+    });
+    const activeFill = tabs[idx].querySelector('.pro-tab-bar-fill');
+    if (activeFill) {
+      void activeFill.offsetWidth;
+      activeFill.classList.add('run');
+    }
+  }
+
+  function show(n) {
+    idx = (n + cards.length) % cards.length;
+    tabs.forEach((t, i) => t.classList.toggle('active', i === idx));
+    cards.forEach((c, i) => c.classList.toggle('active', i === idx));
+    restartActiveBar();
+  }
+
+  function startTimer() {
+    stopTimer();
+    restartActiveBar();
+    timer = setInterval(() => show(idx + 1), 3000);
+  }
+  function stopTimer() {
+    if (timer) { clearInterval(timer); timer = null; }
+  }
+
+  tabs.forEach((t, i) => t.addEventListener('click', () => { show(i); startTimer(); }));
+
+  const stage = document.querySelector('.pro-tips-spotlight');
+  if (stage) {
+    const ioP = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) startTimer();
+        else stopTimer();
+      });
+    }, { threshold: 0.3 });
+    ioP.observe(stage);
+  }
+})();
+
+// Live counter — increments by +1..+5 every 2-4s, syncs ALL elements
+(() => {
+  const bigEl = document.getElementById('live-counter');
+  const pillEls = document.querySelectorAll('.live-counter-val');
+  if (!bigEl && !pillEls.length) return;
+  let val = 40046;
+  let timer = null;
+
+  function setVal(v) {
+    const formatted = v.toLocaleString('en-US');
+    if (bigEl && bigEl.firstChild && bigEl.firstChild.nodeType === 3) {
+      bigEl.firstChild.nodeValue = formatted;
+    } else if (bigEl) {
+      bigEl.textContent = formatted;
+    }
+    pillEls.forEach(p => { p.textContent = formatted; });
+  }
+  setVal(val); // sync on init
+
+  function tick() {
+    const inc = Math.floor(Math.random() * 5) + 1; // +1..+5
+    val += inc;
+    setVal(val);
+    if (bigEl) {
+      // Bump animation on big number
+      bigEl.classList.remove('bump');
+      void bigEl.offsetWidth;
+      bigEl.classList.add('bump');
+      // Floating "+N" badge
+      const badge = document.createElement('span');
+      badge.className = 'bump-badge';
+      badge.textContent = '+' + inc;
+      bigEl.appendChild(badge);
+      requestAnimationFrame(() => badge.classList.add('show'));
+      setTimeout(() => badge.remove(), 1200);
+    }
+    // Subtle bump on pill counters (just brief color flash via class)
+    pillEls.forEach(p => {
+      p.classList.remove('pill-bump');
+      void p.offsetWidth;
+      p.classList.add('pill-bump');
+    });
+  }
+
+  function scheduleNext() {
+    timer = setTimeout(() => {
+      tick();
+      scheduleNext();
+    }, 1800 + Math.random() * 2200); // 1.8-4s
+  }
+
+  // Watch BOTH counters — start timer if ANY counter is visible
+  let visibleCount = 0;
+  const targets = [bigEl, ...pillEls].filter(Boolean);
+  const ioC = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) visibleCount++;
+      else visibleCount = Math.max(0, visibleCount - 1);
+    });
+    if (visibleCount > 0 && !timer) scheduleNext();
+    else if (visibleCount === 0 && timer) { clearTimeout(timer); timer = null; }
+  }, { threshold: 0.1 });
+  targets.forEach(t => ioC.observe(t));
+})();
+
+// Why-different spotlight switcher (auto-rotate 3s + click)
+(() => {
+  const slides = document.querySelectorAll('.why-slide');
+  const pills = document.querySelectorAll('.why-pill');
+  if (!slides.length) return;
+  let idx = 0;
+  let timer = null;
+
+  const progressFill = document.querySelector('.why-progress-fill');
+  function restartProgress() {
+    if (!progressFill) return;
+    progressFill.classList.remove('run');
+    void progressFill.offsetWidth; // force reflow to restart transition
+    progressFill.classList.add('run');
+  }
+
+  function show(n) {
+    idx = (n + slides.length) % slides.length;
+    slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+    pills.forEach((p, i) => p.classList.toggle('active', i === idx));
+    restartProgress();
+  }
+
+  function startTimer() {
+    stopTimer();
+    restartProgress();
+    timer = setInterval(() => show(idx + 1), 3000);
+  }
+  function stopTimer() {
+    if (timer) { clearInterval(timer); timer = null; }
+  }
+
+  pills.forEach((p, i) => {
+    p.addEventListener('click', () => {
+      show(i);
+      startTimer();
+    });
+  });
+
+  // Only auto-rotate when spotlight is in view (saves CPU + UX)
+  const spotlight = document.querySelector('.why-spotlight');
+  if (spotlight) {
+    const io2 = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) startTimer();
+        else stopTimer();
+      });
+    }, { threshold: 0.3 });
+    io2.observe(spotlight);
+  }
+})();
+</script>
+
+</body>
+</html>
