@@ -410,7 +410,7 @@ h3 {
   overflow: hidden;
 }
 
-/* Clean dark hero — no texture */
+/* Hero — starfield canvas + subtle purple glow */
 .hero::before {
   content: '';
   position: absolute;
@@ -419,17 +419,24 @@ h3 {
   background: radial-gradient(circle, var(--primary-glow) 0%, transparent 60%);
   filter: blur(60px);
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
-.hero::after {
-  content: '';
+.hero-mesh {
   position: absolute;
-  bottom: -200px; left: -100px;
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(100, 69, 237, 0.08) 0%, transparent 65%);
-  filter: blur(80px);
+  inset: 0;
+  overflow: hidden;
   pointer-events: none;
   z-index: 0;
+}
+.hero-stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-stars { opacity: 0.5; }
 }
 .hero-grid {
   display: grid;
@@ -1405,6 +1412,11 @@ h3 {
   margin-left: auto;
   margin-right: auto;
 }
+.pro-tips-header h2 { margin-bottom: 20px; }
+.pro-tips-header .subhead {
+  margin: 0 auto;
+  max-width: 560px;
+}
 /* Pro Tips — Monday-style spotlight: top tabs + big photo card */
 .pro-tips-spotlight {
   position: relative;
@@ -1903,6 +1915,9 @@ h3 {
      1 — HERO
      ========================================================= -->
 <section class="hero">
+  <div class="hero-mesh" aria-hidden="true">
+    <canvas class="hero-stars"></canvas>
+  </div>
   <div class="container">
     <div class="hero-grid">
       <div class="hero-text">
@@ -2425,6 +2440,113 @@ document.querySelectorAll('.float-card').forEach((el, i) => {
   el.dataset.order = i;
   ioCards.observe(el);
 });
+
+// Hero starfield — canvas-rendered twinkling stars
+(() => {
+  const canvas = document.querySelector('.hero-stars');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d', { alpha: true });
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  let w = 0, h = 0;
+  let stars = [];
+  let last = 0;
+  let rafId = null;
+  let inView = true;
+
+  const COLORS = ['255, 255, 255', '199, 122, 232', '255, 195, 80', '180, 200, 255'];
+  const COLOR_WEIGHTS = [0.7, 0.13, 0.1, 0.07]; // bias toward white
+
+  function pickColor() {
+    let r = Math.random();
+    for (let i = 0; i < COLORS.length; i++) {
+      r -= COLOR_WEIGHTS[i];
+      if (r <= 0) return COLORS[i];
+    }
+    return COLORS[0];
+  }
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    w = rect.width; h = rect.height;
+    if (!w || !h) return;
+    canvas.width = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(dpr, dpr);
+    initStars();
+  }
+
+  function initStars() {
+    stars = [];
+    const count = Math.floor((w * h) / 3500); // density
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() < 0.85 ? (Math.random() * 0.9 + 0.3) : (Math.random() * 1.6 + 1.2),
+        base: 0.15 + Math.random() * 0.75,
+        speed: 0.4 + Math.random() * 1.8,
+        phase: Math.random() * Math.PI * 2,
+        drift: (Math.random() - 0.5) * 0.04,
+        color: pickColor(),
+      });
+    }
+  }
+
+  function tick(now) {
+    if (!inView) { rafId = null; return; }
+    const dt = last ? Math.min(0.05, (now - last) / 1000) : 0.016;
+    last = now;
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0, n = stars.length; i < n; i++) {
+      const s = stars[i];
+      s.phase += s.speed * dt;
+      s.y += s.drift; // very slow drift
+      if (s.y > h + 4) s.y = -4;
+      else if (s.y < -4) s.y = h + 4;
+      const tw = 0.55 + 0.45 * Math.sin(s.phase);
+      const a = s.base * tw;
+      // Soft glow halo for bigger stars
+      if (s.r > 1.2) {
+        const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 5);
+        g.addColorStop(0, `rgba(${s.color}, ${a * 0.55})`);
+        g.addColorStop(1, `rgba(${s.color}, 0)`);
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r * 5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.fillStyle = `rgba(${s.color}, ${a})`;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function start() { if (!rafId) { last = 0; rafId = requestAnimationFrame(tick); } }
+  function stop() { if (rafId) { cancelAnimationFrame(rafId); rafId = null; } }
+
+  resize();
+  start();
+
+  // Pause when hero off-screen
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      inView = e.isIntersecting;
+      if (inView) start(); else stop();
+    });
+  }, { threshold: 0 });
+  io.observe(canvas.parentElement);
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resize, 150);
+  });
+})();
 
 // Hero video carousel — 5 tiles rotate through 5 slots every 5s
 // No src swap, no opacity hack — pure CSS transform/filter transitions
