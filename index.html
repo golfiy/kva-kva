@@ -1823,28 +1823,59 @@ h3 {
   margin: 0 32px;
   background: var(--bg-elev-1);
 }
-.final-cta-bg {
+/* Final CTA — 2-row marquee (top ← left, bottom → right) */
+.final-cta-marquee {
   position: absolute;
   inset: 0;
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 12px;
   padding: 12px;
-  filter: blur(0.3px);
+  overflow: hidden;
 }
-.final-cta-bg .stream-tile {
+.marquee-row {
+  flex: 1;
+  overflow: hidden;
   border-radius: 12px;
-  min-height: 0;
-  aspect-ratio: auto;
-  filter: brightness(1.25) saturate(1.15) contrast(1.05);
 }
-.final-cta-bg .stream-tile-bg { font-size: 36px; opacity: 0.9; }
-.final-cta-bg .stream-tile-ui { padding: 6px; }
-.final-cta-bg .live-pill { font-size: 8px; padding: 2px 6px; }
-.final-cta-bg .live-pill::before { width: 4px; height: 4px; }
-.final-cta-bg .viewer-pill { font-size: 8px; padding: 2px 6px; }
-.final-cta-bg .stream-tile-chat, .final-cta-bg .stream-tile-reactions, .final-cta-bg .stream-tile-caption { display: none; }
+.marquee-track {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  height: 100%;
+  animation: marquee-left 75s linear infinite;
+  will-change: transform;
+}
+.marquee-row.reverse .marquee-track {
+  animation-name: marquee-right;
+  animation-duration: 85s;
+}
+.marquee-tile {
+  flex: 0 0 auto;
+  width: 170px;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-elev-1);
+  filter: brightness(1.18) saturate(1.12) contrast(1.04);
+}
+.marquee-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@keyframes marquee-left {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes marquee-right {
+  from { transform: translate3d(-50%, 0, 0); }
+  to   { transform: translate3d(0, 0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none !important; }
+}
 .final-cta-overlay {
   position: absolute;
   inset: 0;
@@ -2397,24 +2428,50 @@ h3 {
      ========================================================= -->
 <section class="final-cta">
   <div class="final-cta-inner">
-    <!-- Background mosaic — 16 placeholder photos -->
-    <div class="final-cta-bg">
-      <div class="stream-tile has-image"><img src="person-1.jpg" alt=""></div>
-      <div class="stream-tile has-image"><img src="person-2.jpg" alt=""></div>
-      <div class="stream-tile has-image"><img src="person-3.jpg" alt=""></div>
-      <div class="stream-tile has-image"><img src="person-4.jpg" alt=""></div>
-      <div class="stream-tile has-image"><img src="person-5.jpg" alt=""></div>
-      <div class="stream-tile has-image"><img src="person-6.jpg" alt=""></div>
-      <div class="stream-tile has-image"><img src="person-7.jpg" alt=""></div>
-      <div class="stream-tile has-image"><img src="person-8.jpg" alt=""></div>
-      <div class="stream-tile has-image"><img src="person-9.jpg" alt=""></div>
-      <div class="stream-tile has-image"><img src="person-10.jpg" alt=""></div>
-      <div class="stream-tile has-image"><img src="person-11.jpg" alt=""></div>
-      <div class="stream-tile has-image"><img src="person-12.jpg" alt=""></div>
-      <div class="stream-tile has-image"><img src="person-4.jpg" alt=""></div>
-      <div class="stream-tile has-image"><img src="person-7.jpg" alt=""></div>
-      <div class="stream-tile has-image"><img src="person-2.jpg" alt=""></div>
-      <div class="stream-tile has-image"><img src="person-11.jpg" alt=""></div>
+    <!-- Background marquee — top row left, bottom row right, infinite seamless loop -->
+    <div class="final-cta-marquee">
+      <div class="marquee-row">
+        <div class="marquee-track">
+          <div class="marquee-tile"><img src="person-1.jpg"  alt=""></div>
+          <div class="marquee-tile"><img src="person-2.jpg"  alt=""></div>
+          <div class="marquee-tile"><img src="person-3.jpg"  alt=""></div>
+          <div class="marquee-tile"><img src="person-4.jpg"  alt=""></div>
+          <div class="marquee-tile"><img src="person-5.jpg"  alt=""></div>
+          <div class="marquee-tile"><img src="person-6.jpg"  alt=""></div>
+          <div class="marquee-tile"><img src="person-7.jpg"  alt=""></div>
+          <div class="marquee-tile"><img src="person-8.jpg"  alt=""></div>
+          <!-- duplicate for seamless loop -->
+          <div class="marquee-tile"><img src="person-1.jpg"  alt=""></div>
+          <div class="marquee-tile"><img src="person-2.jpg"  alt=""></div>
+          <div class="marquee-tile"><img src="person-3.jpg"  alt=""></div>
+          <div class="marquee-tile"><img src="person-4.jpg"  alt=""></div>
+          <div class="marquee-tile"><img src="person-5.jpg"  alt=""></div>
+          <div class="marquee-tile"><img src="person-6.jpg"  alt=""></div>
+          <div class="marquee-tile"><img src="person-7.jpg"  alt=""></div>
+          <div class="marquee-tile"><img src="person-8.jpg"  alt=""></div>
+        </div>
+      </div>
+      <div class="marquee-row reverse">
+        <div class="marquee-track">
+          <div class="marquee-tile"><img src="person-9.jpg"  alt=""></div>
+          <div class="marquee-tile"><img src="person-10.jpg" alt=""></div>
+          <div class="marquee-tile"><img src="person-11.jpg" alt=""></div>
+          <div class="marquee-tile"><img src="person-12.jpg" alt=""></div>
+          <div class="marquee-tile"><img src="group-stats.jpg" alt=""></div>
+          <div class="marquee-tile"><img src="theme-5.jpg"  alt=""></div>
+          <div class="marquee-tile"><img src="group-3.jpg"  alt=""></div>
+          <div class="marquee-tile"><img src="group-1.jpg"  alt=""></div>
+          <!-- duplicate for seamless loop -->
+          <div class="marquee-tile"><img src="person-9.jpg"  alt=""></div>
+          <div class="marquee-tile"><img src="person-10.jpg" alt=""></div>
+          <div class="marquee-tile"><img src="person-11.jpg" alt=""></div>
+          <div class="marquee-tile"><img src="person-12.jpg" alt=""></div>
+          <div class="marquee-tile"><img src="group-stats.jpg" alt=""></div>
+          <div class="marquee-tile"><img src="theme-5.jpg"  alt=""></div>
+          <div class="marquee-tile"><img src="group-3.jpg"  alt=""></div>
+          <div class="marquee-tile"><img src="group-1.jpg"  alt=""></div>
+        </div>
+      </div>
     </div>
     <div class="final-cta-overlay"></div>
     <div class="final-cta-content">
