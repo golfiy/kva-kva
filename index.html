@@ -1496,10 +1496,46 @@ h3 {
   width: 48px;
   height: 48px;
   border-radius: 14px;
+  position: relative;
 }
-.pro-tab .icon-box svg {
+.pro-tab .icon-box > svg:not(.icon-progress) {
   width: 24px;
   height: 24px;
+  position: relative;
+  z-index: 1;
+}
+.icon-progress {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 2;
+}
+.icon-progress rect {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  /* Rotate so trace starts from TOP CENTER, going clockwise */
+  transform: rotate(-90deg);
+  transform-origin: 24px 24px;
+  filter: drop-shadow(0 0 4px rgba(100, 69, 237, 0.55));
+  opacity: 0;
+}
+.pro-tab.active .icon-progress rect {
+  opacity: 1;
+}
+.pro-tab.active .icon-progress rect.run {
+  animation: traceIconBox 3s linear forwards;
+}
+@keyframes traceIconBox {
+  from { stroke-dashoffset: 100; }
+  to   { stroke-dashoffset: 0; }
 }
 .pro-tab-label {
   font-family: var(--font-display);
@@ -1510,25 +1546,6 @@ h3 {
 }
 .pro-tab.active .pro-tab-label { color: var(--primary); }
 
-.pro-tab-bar {
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 24px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.08);
-  overflow: hidden;
-}
-.pro-tab-bar-fill {
-  height: 100%;
-  width: 0;
-  background: var(--primary);
-  box-shadow: 0 0 8px rgba(100, 69, 237, 0.6);
-}
-.pro-tab.active .pro-tab-bar-fill.run {
-  width: 100%;
-  transition: width 3s linear;
-}
 
 .pro-card-stage {
   position: relative;
@@ -2217,30 +2234,30 @@ h3 {
         <button class="pro-tab active" data-target="0">
           <div class="icon-box">
             <svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></svg>
+            <svg class="icon-progress" viewBox="0 0 48 48"><rect x="1.5" y="1.5" width="45" height="45" rx="12.5" pathLength="100"></rect></svg>
           </div>
           <span class="pro-tab-label">01 / LIGHTING</span>
-          <div class="pro-tab-bar"><div class="pro-tab-bar-fill"></div></div>
         </button>
         <button class="pro-tab" data-target="1">
           <div class="icon-box">
             <svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/></svg>
+            <svg class="icon-progress" viewBox="0 0 48 48"><rect x="1.5" y="1.5" width="45" height="45" rx="12.5" pathLength="100"></rect></svg>
           </div>
           <span class="pro-tab-label">02 / AUDIO</span>
-          <div class="pro-tab-bar"><div class="pro-tab-bar-fill"></div></div>
         </button>
         <button class="pro-tab" data-target="2">
           <div class="icon-box">
             <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+            <svg class="icon-progress" viewBox="0 0 48 48"><rect x="1.5" y="1.5" width="45" height="45" rx="12.5" pathLength="100"></rect></svg>
           </div>
           <span class="pro-tab-label">03 / CHAT</span>
-          <div class="pro-tab-bar"><div class="pro-tab-bar-fill"></div></div>
         </button>
         <button class="pro-tab" data-target="3">
           <div class="icon-box">
             <svg viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+            <svg class="icon-progress" viewBox="0 0 48 48"><rect x="1.5" y="1.5" width="45" height="45" rx="12.5" pathLength="100"></rect></svg>
           </div>
           <span class="pro-tab-label">04 / TOPICS</span>
-          <div class="pro-tab-bar"><div class="pro-tab-bar-fill"></div></div>
         </button>
       </div>
 
@@ -2544,16 +2561,15 @@ document.querySelectorAll('.float-card').forEach((el, i) => {
   let timer = null;
 
   function restartActiveBar() {
-    tabs.forEach((tab, i) => {
-      const fill = tab.querySelector('.pro-tab-bar-fill');
-      if (!fill) return;
-      fill.classList.remove('run');
-      fill.style.width = '0';
+    // Reset all progress strokes
+    document.querySelectorAll('.pro-tab .icon-progress rect').forEach(r => {
+      r.classList.remove('run');
     });
-    const activeFill = tabs[idx].querySelector('.pro-tab-bar-fill');
-    if (activeFill) {
-      void activeFill.offsetWidth;
-      activeFill.classList.add('run');
+    // Start animation on the active tab's icon-progress
+    const activeRect = tabs[idx]?.querySelector('.icon-progress rect');
+    if (activeRect) {
+      void activeRect.getBoundingClientRect(); // force reflow
+      activeRect.classList.add('run');
     }
   }
 
