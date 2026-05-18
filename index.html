@@ -1851,31 +1851,14 @@ h3 {
 .footer-col li a:hover { color: white; }
 
 .footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding-top: 28px;
   border-top: 1px solid var(--border-subtle);
   font-size: 13px;
   color: var(--text-muted);
 }
-.footer-social { display: flex; gap: 12px; }
-.footer-social a {
-  width: 36px; height: 36px;
-  border-radius: 10px;
-  border: 1px solid var(--border-subtle);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  color: var(--text-secondary);
-  transition: border-color .15s, color .15s;
-}
-.footer-social a:hover { border-color: var(--primary); color: white; }
 
 @media (max-width: 880px) {
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .footer-bottom { flex-direction: column; gap: 16px; }
 }
 
 /* ============================================================
@@ -2386,13 +2369,19 @@ h3 {
         <ul>
           <li><a href="#">Community Guidelines</a></li>
           <li><a href="#">Stream Rules</a></li>
-          <li><a href="#">Reports & Complaints</a></li>
+          <li><a href="#">Reports &amp; Complaints</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Legal</h5>
+        <h5>Legal terms</h5>
         <ul>
-          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Billing and Refund Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Privacy info</h5>
+        <ul>
           <li><a href="#">Privacy Policy</a></li>
           <li><a href="#">Cookie Policy</a></li>
         </ul>
@@ -2400,28 +2389,12 @@ h3 {
       <div class="footer-col">
         <h5>Support</h5>
         <ul>
-          <li><a href="#">Help Center</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">Creator Support</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Company</h5>
-        <ul>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Press</a></li>
+          <li><a href="mailto:support@toplive.com">support@toplive.com</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 TopLive. All rights reserved.</span>
-      <div class="footer-social">
-        <a href="#" aria-label="Instagram">◐</a>
-        <a href="#" aria-label="TikTok">♫</a>
-        <a href="#" aria-label="X">𝕏</a>
-        <a href="#" aria-label="YouTube">▶</a>
-      </div>
+      <span>All Rights Reserved, 2026 TopLive. Company legal address.</span>
     </div>
   </div>
 </footer>
