@@ -187,6 +187,141 @@ h3 {
   margin-right: 2px;
 }
 
+/* "or" separator + social circle buttons in hero */
+.hero-or {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 0 4px;
+  user-select: none;
+}
+.social-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .18s ease, box-shadow .18s ease;
+  padding: 0;
+  flex-shrink: 0;
+}
+.social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(255, 255, 255, 0.18);
+}
+.social-btn svg {
+  width: 22px;
+  height: 22px;
+}
+.social-btn-apple svg {
+  width: 24px;
+  height: 24px;
+  margin-top: -2px;
+}
+
+/* Language switcher (top nav) */
+.lang-switcher {
+  position: relative;
+  margin-right: 4px;
+}
+.lang-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  padding: 9px 14px;
+  border-radius: 100px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease, color .15s ease;
+}
+.lang-trigger:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  border-color: var(--border-strong);
+}
+.lang-trigger svg {
+  fill: currentColor;
+  flex-shrink: 0;
+}
+.lang-trigger .lang-current {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+.lang-chevron {
+  transition: transform .2s ease;
+}
+.lang-switcher.open .lang-chevron {
+  transform: rotate(180deg);
+}
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border-strong);
+  border-radius: 16px;
+  padding: 8px;
+  min-width: 220px;
+  max-height: 380px;
+  overflow-y: auto;
+  display: none;
+  z-index: 200;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  scrollbar-width: thin;
+}
+.lang-menu::-webkit-scrollbar { width: 6px; }
+.lang-menu::-webkit-scrollbar-track { background: transparent; }
+.lang-menu::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 3px; }
+.lang-switcher.open .lang-menu {
+  display: block;
+  animation: lang-menu-in .18s ease-out;
+}
+@keyframes lang-menu-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.lang-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background .12s ease, color .12s ease;
+}
+.lang-option:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+}
+.lang-option.active {
+  color: white;
+  background: rgba(100, 69, 237, 0.18);
+}
+.lang-option-code {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 720px) {
+  .lang-trigger { padding: 7px 10px; font-size: 12px; }
+  .lang-menu { min-width: 180px; }
+}
+
 /* === LIVE PILL & VIEWER COUNT === */
 .live-pill {
   display: inline-flex;
@@ -1995,6 +2130,37 @@ h3 {
       <a href="#faq">FAQ</a>
     </div>
     <div class="nav-cta">
+      <div class="lang-switcher">
+        <button class="lang-trigger" aria-label="Select language" aria-haspopup="listbox" aria-expanded="false">
+          <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm6.93 6h-2.95a15.65 15.65 0 0 0-1.38-3.56A8 8 0 0 1 18.93 8zM12 4a13.7 13.7 0 0 1 1.85 4h-3.7A13.7 13.7 0 0 1 12 4zM4.26 14a7.82 7.82 0 0 1 0-4h3.38a16.55 16.55 0 0 0 0 4zm.82 2h2.95a15.65 15.65 0 0 0 1.38 3.56A8 8 0 0 1 5.08 16zm2.95-8H5.08a8 8 0 0 1 4.33-3.56A15.65 15.65 0 0 0 8.03 8zM12 20a13.7 13.7 0 0 1-1.85-4h3.7A13.7 13.7 0 0 1 12 20zm2.34-6H9.66a14.32 14.32 0 0 1 0-4h4.68a14.32 14.32 0 0 1 0 4zm.25 5.56A15.65 15.65 0 0 0 15.97 16h2.95a8 8 0 0 1-4.33 3.56zm1.77-5.56a16.55 16.55 0 0 0 0-4h3.38a7.82 7.82 0 0 1 0 4z"/></svg>
+          <span class="lang-current">EN</span>
+          <svg class="lang-chevron" width="10" height="10" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-menu" role="listbox">
+          <div class="lang-option active" data-code="EN" role="option">English <span class="lang-option-code">EN</span></div>
+          <div class="lang-option" data-code="RU" role="option">Русский <span class="lang-option-code">RU</span></div>
+          <div class="lang-option" data-code="ES" role="option">Español <span class="lang-option-code">ES</span></div>
+          <div class="lang-option" data-code="FR" role="option">Français <span class="lang-option-code">FR</span></div>
+          <div class="lang-option" data-code="DE" role="option">Deutsch <span class="lang-option-code">DE</span></div>
+          <div class="lang-option" data-code="IT" role="option">Italiano <span class="lang-option-code">IT</span></div>
+          <div class="lang-option" data-code="PT" role="option">Português <span class="lang-option-code">PT</span></div>
+          <div class="lang-option" data-code="PL" role="option">Polski <span class="lang-option-code">PL</span></div>
+          <div class="lang-option" data-code="TR" role="option">Türkçe <span class="lang-option-code">TR</span></div>
+          <div class="lang-option" data-code="AR" role="option">العربية <span class="lang-option-code">AR</span></div>
+          <div class="lang-option" data-code="HE" role="option">עברית <span class="lang-option-code">HE</span></div>
+          <div class="lang-option" data-code="HI" role="option">हिन्दी <span class="lang-option-code">HI</span></div>
+          <div class="lang-option" data-code="ZH" role="option">简体中文 <span class="lang-option-code">ZH</span></div>
+          <div class="lang-option" data-code="ZH-TW" role="option">繁體中文 <span class="lang-option-code">ZH-TW</span></div>
+          <div class="lang-option" data-code="JA" role="option">日本語 <span class="lang-option-code">JA</span></div>
+          <div class="lang-option" data-code="KO" role="option">한국어 <span class="lang-option-code">KO</span></div>
+          <div class="lang-option" data-code="VI" role="option">Tiếng Việt <span class="lang-option-code">VI</span></div>
+          <div class="lang-option" data-code="TH" role="option">ไทย <span class="lang-option-code">TH</span></div>
+          <div class="lang-option" data-code="ID" role="option">Bahasa Indonesia <span class="lang-option-code">ID</span></div>
+          <div class="lang-option" data-code="NL" role="option">Nederlands <span class="lang-option-code">NL</span></div>
+          <div class="lang-option" data-code="UK" role="option">Українська <span class="lang-option-code">UK</span></div>
+          <div class="lang-option" data-code="FIL" role="option">Filipino <span class="lang-option-code">FIL</span></div>
+        </div>
+      </div>
       <button class="btn btn-ghost">Log In</button>
       <button class="btn btn-primary" style="padding: 10px 18px; font-size: 14px;">Join TopLive</button>
     </div>
@@ -2019,7 +2185,13 @@ h3 {
         <p class="subhead">Meet real people, discover new interests, and share your moments live. TopLive is where social feels alive.</p>
         <div class="hero-actions">
           <button class="btn btn-primary">Join TopLive</button>
-          <button class="btn btn-secondary btn-icon-play">Watch Live Now</button>
+          <span class="hero-or">or</span>
+          <button class="social-btn social-btn-google" aria-label="Continue with Google">
+            <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          </button>
+          <button class="social-btn social-btn-apple" aria-label="Continue with Apple">
+            <svg viewBox="0 0 24 24"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+          </button>
         </div>
         <div class="hero-counter">
           <span class="hero-counter-dot"></span>
@@ -2573,6 +2745,43 @@ document.querySelectorAll('.float-card').forEach((el, i) => {
   el.dataset.order = i;
   ioCards.observe(el);
 });
+
+// Language switcher (top nav)
+(() => {
+  const switcher = document.querySelector('.lang-switcher');
+  if (!switcher) return;
+  const trigger = switcher.querySelector('.lang-trigger');
+  const current = switcher.querySelector('.lang-current');
+
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = switcher.classList.toggle('open');
+    trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  switcher.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      switcher.querySelectorAll('.lang-option').forEach(o => o.classList.remove('active'));
+      opt.classList.add('active');
+      current.textContent = opt.dataset.code;
+      switcher.classList.remove('open');
+      trigger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.lang-switcher')) {
+      switcher.classList.remove('open');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      switcher.classList.remove('open');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
 
 // Hero video carousel — 5 tiles rotate through 5 slots every 5s
 // No src swap, no opacity hack — pure CSS transform/filter transitions
