@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700;800&family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="translations.js"></script>
 <style>
 /* ============================================================
    TOPLIVE — STREAMING LANDING V2
@@ -44,6 +45,32 @@
   --font-display: 'Wix Madefor Display', system-ui, sans-serif;
   --font-body: 'Inter Tight', system-ui, sans-serif;
 }
+
+/* === RTL support (Arabic, Hebrew) === */
+html[dir="rtl"] .nav-links { /* keep center positioning */ }
+html[dir="rtl"] .hero-text,
+html[dir="rtl"] .why-slide-text,
+html[dir="rtl"] .pro-card-text,
+html[dir="rtl"] .safety-content,
+html[dir="rtl"] .value-prop-wrap,
+html[dir="rtl"] .testimonial,
+html[dir="rtl"] .faq-item summary,
+html[dir="rtl"] .faq-item p { text-align: right; }
+html[dir="rtl"] .why-slide-text { left: auto; right: 64px; }
+html[dir="rtl"] .pro-card-text { left: auto; right: 56px; }
+html[dir="rtl"] .why-slide-overlay {
+  background:
+    linear-gradient(260deg, rgba(10, 10, 18, 0.7) 0%, rgba(10, 10, 18, 0.4) 45%, rgba(10, 10, 18, 0.1) 70%, transparent 100%),
+    linear-gradient(180deg, rgba(10, 10, 18, 0.1) 0%, transparent 25%, transparent 70%, rgba(10, 10, 18, 0.5) 100%);
+}
+html[dir="rtl"] .pro-card-overlay {
+  background:
+    linear-gradient(275deg, rgba(10, 10, 18, 0.78) 0%, rgba(10, 10, 18, 0.5) 35%, rgba(10, 10, 18, 0.2) 60%, transparent 85%),
+    linear-gradient(180deg, transparent 50%, rgba(10, 10, 18, 0.5) 100%);
+}
+html[dir="rtl"] .faq-item summary::after { margin-left: 0; margin-right: auto; }
+html[dir="rtl"] .lang-menu { right: auto; left: 0; }
+html[dir="rtl"] .stat-num .unit { margin-left: 0; margin-right: 4px; }
 
 /* === RESET === */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -2124,10 +2151,10 @@ h3 {
       TopLive
     </a>
     <div class="nav-links">
-      <a href="#why">Discover</a>
-      <a href="#how">How it works</a>
-      <a href="#safety">Safety</a>
-      <a href="#faq">FAQ</a>
+      <a href="#why" data-i18n="nav_discover">Discover</a>
+      <a href="#how" data-i18n="nav_how">How it works</a>
+      <a href="#safety" data-i18n="nav_safety">Safety</a>
+      <a href="#faq" data-i18n="nav_faq">FAQ</a>
     </div>
     <div class="nav-cta">
       <div class="lang-switcher">
@@ -2161,8 +2188,8 @@ h3 {
           <div class="lang-option" data-code="FIL" role="option">Filipino <span class="lang-option-code">FIL</span></div>
         </div>
       </div>
-      <button class="btn btn-ghost">Log In</button>
-      <button class="btn btn-primary" style="padding: 10px 18px; font-size: 14px;">Join TopLive</button>
+      <button class="btn btn-ghost" data-i18n="nav_login">Log In</button>
+      <button class="btn btn-primary" style="padding: 10px 18px; font-size: 14px;" data-i18n="cta_join">Join TopLive</button>
     </div>
   </div>
 </nav>
@@ -2180,12 +2207,12 @@ h3 {
   <div class="container">
     <div class="hero-grid">
       <div class="hero-text">
-        <span class="eyebrow glow">Discover · Watch · Go Live</span>
-        <h1>Your world,<br>live.</h1>
-        <p class="subhead">Meet real people, discover new interests, and share your moments live. TopLive is where social feels alive.</p>
+        <span class="eyebrow glow" data-i18n="hero_eyebrow">Discover · Watch · Go Live</span>
+        <h1><span data-i18n="hero_title_1">Your world,</span><br><span data-i18n="hero_title_2">live.</span></h1>
+        <p class="subhead" data-i18n="hero_sub">Meet real people, discover new interests, and share your moments live. TopLive is where social feels alive.</p>
         <div class="hero-actions">
-          <button class="btn btn-primary">Join TopLive</button>
-          <span class="hero-or">or</span>
+          <button class="btn btn-primary" data-i18n="cta_join">Join TopLive</button>
+          <span class="hero-or" data-i18n="hero_or">or</span>
           <button class="social-btn social-btn-google" aria-label="Continue with Google">
             <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
           </button>
@@ -2195,7 +2222,7 @@ h3 {
         </div>
         <div class="hero-counter">
           <span class="hero-counter-dot"></span>
-          <strong class="live-counter-val">40,046</strong> people live right now
+          <strong class="live-counter-val">40,046</strong> <span data-i18n="hero_counter">people live right now</span>
         </div>
       </div>
 
@@ -2238,27 +2265,27 @@ h3 {
 <section class="value-prop">
   <div class="container">
     <div class="value-prop-wrap reveal">
-      <h2>More than a feed.<br>More than a follow.</h2>
-      <p class="subhead lg">TopLive brings social back to real time. Watch people share what they love, join the conversation, or go live yourself — no followers required to start.</p>
+      <h2><span data-i18n="vp_title_1">More than a feed.</span><br><span data-i18n="vp_title_2">More than a follow.</span></h2>
+      <p class="subhead lg" data-i18n="vp_sub">TopLive brings social back to real time. Watch people share what they love, join the conversation, or go live yourself — no followers required to start.</p>
     </div>
 
     <div class="stats-block reveal">
       <div class="stats-block-left">
-        <div class="stats-block-eyebrow">By the numbers · 2026</div>
+        <div class="stats-block-eyebrow" data-i18n="stats_eyebrow">By the numbers · 2026</div>
         <div class="stats-photo"><img src="group-stats.jpg" alt=""></div>
       </div>
       <div class="stats-block-right">
         <div class="stat-line">
           <div class="stat-num" id="live-counter">40,046</div>
-          <div class="stat-label">Live right now</div>
+          <div class="stat-label" data-i18n="stats_live">Live right now</div>
         </div>
         <div class="stat-line">
           <div class="stat-num">4.2<span class="unit accent">M</span></div>
-          <div class="stat-label">Community members worldwide</div>
+          <div class="stat-label" data-i18n="stats_members">Community members worldwide</div>
         </div>
         <div class="stat-line">
           <div class="stat-num">120<span class="unit accent">+</span></div>
-          <div class="stat-label">Countries streaming live</div>
+          <div class="stat-label" data-i18n="stats_countries">Countries streaming live</div>
         </div>
       </div>
     </div>
@@ -2271,48 +2298,48 @@ h3 {
 <section class="why-different" id="why">
   <div class="container">
     <div class="why-different-header reveal">
-      <span class="eyebrow">Why TopLive hits different</span>
-      <h2>Built for the moment, not the algorithm.</h2>
+      <span class="eyebrow" data-i18n="why_eyebrow">Why TopLive hits different</span>
+      <h2 data-i18n="why_title">Built for the moment, not the algorithm.</h2>
     </div>
     <div class="why-spotlight reveal">
       <div class="why-slide active" data-slide="0">
         <img src="group-1.jpg" alt="" class="why-slide-img">
         <div class="why-slide-overlay"></div>
         <div class="why-slide-text">
-          <h3>Find your people instantly.</h3>
-          <p>Browse live streams by interest. Music, travel, cooking, gaming, art — jump into a room where something is happening right now.</p>
+          <h3 data-i18n="why_s1_t">Find your people instantly.</h3>
+          <p data-i18n="why_s1_d">Browse live streams by interest. Music, travel, cooking, gaming, art — jump into a room where something is happening right now.</p>
         </div>
       </div>
       <div class="why-slide" data-slide="1">
         <img src="group-7.jpg" alt="" class="why-slide-img">
         <div class="why-slide-overlay"></div>
         <div class="why-slide-text">
-          <h3>Built for real connection.</h3>
-          <p>A clean, fast interface designed to get out of the way and let the moment happen. No noise, no clutter — just the room and the people in it.</p>
+          <h3 data-i18n="why_s2_t">Built for real connection.</h3>
+          <p data-i18n="why_s2_d">A clean, fast interface designed to get out of the way and let the moment happen. No noise, no clutter — just the room and the people in it.</p>
         </div>
       </div>
       <div class="why-slide" data-slide="2">
         <img src="theme-5.jpg" alt="" class="why-slide-img">
         <div class="why-slide-overlay"></div>
         <div class="why-slide-text">
-          <h3>Live, not edited.</h3>
-          <p>No filters, no scripts. Just real people sharing real moments as they happen — the kind you'd never catch on a recorded feed.</p>
+          <h3 data-i18n="why_s3_t">Live, not edited.</h3>
+          <p data-i18n="why_s3_d">No filters, no scripts. Just real people sharing real moments as they happen — the kind you'd never catch on a recorded feed.</p>
         </div>
       </div>
       <div class="why-slide" data-slide="3">
         <img src="group-3.jpg" alt="" class="why-slide-img">
         <div class="why-slide-overlay"></div>
         <div class="why-slide-text">
-          <h3>Something for everyone.</h3>
-          <p>Music, travel, cooking, gaming, art — follow creators or discover something new every day. The world is streaming, and you're invited.</p>
+          <h3 data-i18n="why_s4_t">Something for everyone.</h3>
+          <p data-i18n="why_s4_d">Music, travel, cooking, gaming, art — follow creators or discover something new every day. The world is streaming, and you're invited.</p>
         </div>
       </div>
 
       <div class="why-pills">
-        <button class="why-pill active" data-target="0">Discover</button>
-        <button class="why-pill" data-target="1">Connect</button>
-        <button class="why-pill" data-target="2">Live</button>
-        <button class="why-pill" data-target="3">Everyone</button>
+        <button class="why-pill active" data-target="0" data-i18n="why_p1">Discover</button>
+        <button class="why-pill" data-target="1" data-i18n="why_p2">Connect</button>
+        <button class="why-pill" data-target="2" data-i18n="why_p3">Live</button>
+        <button class="why-pill" data-target="3" data-i18n="why_p4">Everyone</button>
       </div>
 
       <div class="why-progress"><div class="why-progress-fill"></div></div>
@@ -2326,9 +2353,9 @@ h3 {
 <section class="how-it-works" id="how">
   <div class="container">
     <div class="how-header reveal">
-      <span class="eyebrow">How it works</span>
-      <h2>Three steps. Zero friction.</h2>
-      <p class="subhead">From signup to first stream in under a minute.</p>
+      <span class="eyebrow" data-i18n="how_eyebrow">How it works</span>
+      <h2 data-i18n="how_title">Three steps. Zero friction.</h2>
+      <p class="subhead" data-i18n="how_sub">From signup to first stream in under a minute.</p>
     </div>
     <div class="how-steps">
 
@@ -2336,8 +2363,8 @@ h3 {
       <div class="how-step reveal">
         <div class="how-num">1</div>
         <div class="how-step-text">
-          <h3>Join in seconds</h3>
-          <p>One screen, one tap. Pick a username, add a photo if you want, and you're in. No profile setup ritual, no friend-import dance.</p>
+          <h3 data-i18n="how_1_t">Join in seconds</h3>
+          <p data-i18n="how_1_d">One screen, one tap. Pick a username, add a photo if you want, and you're in. No profile setup ritual, no friend-import dance.</p>
         </div>
         <div class="how-step-mock how-step-img">
           <img src="step-1-signin.png" alt="">
@@ -2348,8 +2375,8 @@ h3 {
       <div class="how-step reveal">
         <div class="how-num">2</div>
         <div class="how-step-text">
-          <h3>Choose what interests you</h3>
-          <p>Pick a few topics — travel, music, cooking, gaming — and we'll surface streams worth your time. No following anyone, no algorithm to feed.</p>
+          <h3 data-i18n="how_2_t">Choose what interests you</h3>
+          <p data-i18n="how_2_d">Pick a few topics — travel, music, cooking, gaming — and we'll surface streams worth your time. No following anyone, no algorithm to feed.</p>
         </div>
         <div class="how-step-mock how-step-img how-step-stack">
           <img src="step-1-signin.png" alt="" class="mock-bg">
@@ -2361,8 +2388,8 @@ h3 {
       <div class="how-step reveal">
         <div class="how-num">3</div>
         <div class="how-step-text">
-          <h3>Watch, chat, or go live</h3>
-          <p>Drop into a stream and start chatting. Or hit the Live button, pick your topic, and start sharing — no audience required to begin.</p>
+          <h3 data-i18n="how_3_t">Watch, chat, or go live</h3>
+          <p data-i18n="how_3_d">Drop into a stream and start chatting. Or hit the Live button, pick your topic, and start sharing — no audience required to begin.</p>
         </div>
         <div class="how-step-mock how-step-img">
           <img src="step-3-stream.png" alt="">
@@ -2388,10 +2415,10 @@ h3 {
       <div class="float-card fc-6"><img src="person-4.jpg" alt=""><span class="live-pill">LIVE</span><span class="viewer-pill">974</span></div>
 
       <div class="safety-content reveal">
-        <span class="eyebrow">Good vibes, responsibly</span>
-        <h2>A space that takes care of you.</h2>
-        <p>Whether you're watching or streaming, you're in control. We combine active moderation with simple privacy tools so every experience feels safe.</p>
-        <button class="btn btn-primary">Join TopLive</button>
+        <span class="eyebrow" data-i18n="safety_eyebrow">Good vibes, responsibly</span>
+        <h2 data-i18n="safety_title">A space that takes care of you.</h2>
+        <p data-i18n="safety_desc">Whether you're watching or streaming, you're in control. We combine active moderation with simple privacy tools so every experience feels safe.</p>
+        <button class="btn btn-primary" data-i18n="cta_join">Join TopLive</button>
       </div>
     </div>
 
@@ -2399,25 +2426,25 @@ h3 {
       <div class="safety-card">
         <div class="safety-card-img"><img src="theme-9.jpg" alt=""></div>
         <div class="safety-card-body">
-          <div class="safety-card-label">Trust & Safety</div>
-          <h4>Real people, real moderation</h4>
-          <p>Trained humans review reports — not just algorithms. Action is taken in minutes, not days.</p>
+          <div class="safety-card-label" data-i18n="safety_c1_l">Trust & Safety</div>
+          <h4 data-i18n="safety_c1_t">Real people, real moderation</h4>
+          <p data-i18n="safety_c1_d">Trained humans review reports — not just algorithms. Action is taken in minutes, not days.</p>
         </div>
       </div>
       <div class="safety-card">
         <div class="safety-card-img"><img src="person-7.jpg" alt=""></div>
         <div class="safety-card-body">
-          <div class="safety-card-label">Privacy</div>
-          <h4>Your privacy, your rules</h4>
-          <p>Granular controls for who sees you, who can DM, and what shows up in your discovery feed.</p>
+          <div class="safety-card-label" data-i18n="safety_c2_l">Privacy</div>
+          <h4 data-i18n="safety_c2_t">Your privacy, your rules</h4>
+          <p data-i18n="safety_c2_d">Granular controls for who sees you, who can DM, and what shows up in your discovery feed.</p>
         </div>
       </div>
       <div class="safety-card">
         <div class="safety-card-img"><img src="group-1.jpg" alt=""></div>
         <div class="safety-card-body">
-          <div class="safety-card-label">Community</div>
-          <h4>Clear community standards</h4>
-          <p>The rules are written in plain language. No surprises, no shadow bans — what we expect is what you'll see.</p>
+          <div class="safety-card-label" data-i18n="safety_c3_l">Community</div>
+          <h4 data-i18n="safety_c3_t">Clear community standards</h4>
+          <p data-i18n="safety_c3_d">The rules are written in plain language. No surprises, no shadow bans — what we expect is what you'll see.</p>
         </div>
       </div>
     </div>
@@ -2430,9 +2457,9 @@ h3 {
 <section class="pro-tips">
   <div class="container">
     <div class="pro-tips-header reveal">
-      <span class="eyebrow">Pro tips for standout streams</span>
-      <h2>Get the most out of TopLive.</h2>
-      <p class="subhead">A few small things make a big difference — whether you're watching or sharing for the first time.</p>
+      <span class="eyebrow" data-i18n="tips_eyebrow">Pro tips for standout streams</span>
+      <h2 data-i18n="tips_title">Get the most out of TopLive.</h2>
+      <p class="subhead" data-i18n="tips_sub">A few small things make a big difference — whether you're watching or sharing for the first time.</p>
     </div>
 
     <div class="pro-tips-spotlight reveal">
@@ -2442,28 +2469,28 @@ h3 {
             <svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></svg>
             <span class="icon-progress"></span>
           </div>
-          <span class="pro-tab-label">01 / LIGHTING</span>
+          <span class="pro-tab-label" data-i18n="tips_t1">01 / LIGHTING</span>
         </button>
         <button class="pro-tab" data-target="1">
           <div class="icon-box">
             <svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/></svg>
             <span class="icon-progress"></span>
           </div>
-          <span class="pro-tab-label">02 / AUDIO</span>
+          <span class="pro-tab-label" data-i18n="tips_t2">02 / AUDIO</span>
         </button>
         <button class="pro-tab" data-target="2">
           <div class="icon-box">
             <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
             <span class="icon-progress"></span>
           </div>
-          <span class="pro-tab-label">03 / CHAT</span>
+          <span class="pro-tab-label" data-i18n="tips_t3">03 / CHAT</span>
         </button>
         <button class="pro-tab" data-target="3">
           <div class="icon-box">
             <svg viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
             <span class="icon-progress"></span>
           </div>
-          <span class="pro-tab-label">04 / TOPICS</span>
+          <span class="pro-tab-label" data-i18n="tips_t4">04 / TOPICS</span>
         </button>
       </div>
 
@@ -2472,32 +2499,32 @@ h3 {
           <img class="pro-card-img" src="tip-10.jpg" alt="">
           <div class="pro-card-overlay"></div>
           <div class="pro-card-text">
-            <h4>Set the mood with good lighting</h4>
-            <p>Good light makes everything feel warmer and more alive — face the window, not your back to it.</p>
+            <h4 data-i18n="tips_c1_t">Set the mood with good lighting</h4>
+            <p data-i18n="tips_c1_d">Good light makes everything feel warmer and more alive — face the window, not your back to it.</p>
           </div>
         </div>
         <div class="pro-card" data-slide="1">
           <img class="pro-card-img" src="tip-2.jpg" alt="">
           <div class="pro-card-overlay"></div>
           <div class="pro-card-text">
-            <h4>Clear sound, clear vibe</h4>
-            <p>Your voice is the main instrument — make sure it cuts through whatever's around you.</p>
+            <h4 data-i18n="tips_c2_t">Clear sound, clear vibe</h4>
+            <p data-i18n="tips_c2_d">Your voice is the main instrument — make sure it cuts through whatever's around you.</p>
           </div>
         </div>
         <div class="pro-card" data-slide="2">
           <img class="pro-card-img" src="tip-3.jpg" alt="">
           <div class="pro-card-overlay"></div>
           <div class="pro-card-text">
-            <h4>Talk to the room</h4>
-            <p>Read names, react live — that's what separates streams from videos. The chat is the show.</p>
+            <h4 data-i18n="tips_c3_t">Talk to the room</h4>
+            <p data-i18n="tips_c3_d">Read names, react live — that's what separates streams from videos. The chat is the show.</p>
           </div>
         </div>
         <div class="pro-card" data-slide="3">
           <img class="pro-card-img" src="group-3.jpg" alt="">
           <div class="pro-card-overlay"></div>
           <div class="pro-card-text">
-            <h4>Pick your topic and be found</h4>
-            <p>Tag your stream so people who are already looking for what you do can actually find you.</p>
+            <h4 data-i18n="tips_c4_t">Pick your topic and be found</h4>
+            <p data-i18n="tips_c4_d">Tag your stream so people who are already looking for what you do can actually find you.</p>
           </div>
         </div>
       </div>
@@ -2511,8 +2538,8 @@ h3 {
 <section class="faq-section" id="faq">
   <div class="container">
     <div class="faq-header reveal">
-      <span class="eyebrow">Questions, answered</span>
-      <h2>What people say about TopLive.</h2>
+      <span class="eyebrow" data-i18n="faq_eyebrow">Questions, answered</span>
+      <h2 data-i18n="faq_title">What people say about TopLive.</h2>
     </div>
 
     <!-- Testimonials -->
@@ -2520,40 +2547,40 @@ h3 {
       <div class="testimonials-track">
         <div class="testimonial reveal">
           <div class="testimonial-stars">★ ★ ★ ★ ★</div>
-          <p class="testimonial-quote">I came here just to watch cooking streams. Two weeks later I started my own. Didn't expect that at all.</p>
+          <p class="testimonial-quote" data-i18n="tm1_q">I came here just to watch cooking streams. Two weeks later I started my own. Didn't expect that at all.</p>
           <div class="testimonial-footer">
             <div class="avatar"><img src="person-1.jpg" alt=""></div>
             <div class="testimonial-meta">
               <div class="testimonial-name">Maria K.</div>
-              <div class="testimonial-role">Started as a viewer</div>
+              <div class="testimonial-role" data-i18n="tm1_role">Started as a viewer</div>
             </div>
-            <span class="testimonial-tag">Viewer → Creator</span>
+            <span class="testimonial-tag" data-i18n="tm1_tag">Viewer → Creator</span>
           </div>
         </div>
 
         <div class="testimonial active reveal">
           <div class="testimonial-stars">★ ★ ★ ★ ★</div>
-          <p class="testimonial-quote">The chat feels alive. People actually respond, ask questions, share stuff back. It's not like watching a video — it's a real conversation.</p>
+          <p class="testimonial-quote" data-i18n="tm2_q">The chat feels alive. People actually respond, ask questions, share stuff back. It's not like watching a video — it's a real conversation.</p>
           <div class="testimonial-footer">
             <div class="avatar"><img src="person-2.jpg" alt=""></div>
             <div class="testimonial-meta">
               <div class="testimonial-name">Daniel S.</div>
-              <div class="testimonial-role">Music streamer · 3 mo on TopLive</div>
+              <div class="testimonial-role" data-i18n="tm2_role">Music streamer · 3 mo on TopLive</div>
             </div>
-            <span class="testimonial-tag">Creator</span>
+            <span class="testimonial-tag" data-i18n="tm2_tag">Creator</span>
           </div>
         </div>
 
         <div class="testimonial reveal">
           <div class="testimonial-stars">★ ★ ★ ★ ★</div>
-          <p class="testimonial-quote">I leave TopLive open on my second monitor while I work. Someone's always doing something interesting — it's a window into other people's days.</p>
+          <p class="testimonial-quote" data-i18n="tm3_q">I leave TopLive open on my second monitor while I work. Someone's always doing something interesting — it's a window into other people's days.</p>
           <div class="testimonial-footer">
             <div class="avatar"><img src="person-10.jpg" alt=""></div>
             <div class="testimonial-meta">
               <div class="testimonial-name">Sam T.</div>
-              <div class="testimonial-role">Daily viewer · joined Mar 2026</div>
+              <div class="testimonial-role" data-i18n="tm3_role">Daily viewer · joined Mar 2026</div>
             </div>
-            <span class="testimonial-tag">Viewer</span>
+            <span class="testimonial-tag" data-i18n="tm3_tag">Viewer</span>
           </div>
         </div>
       </div>
@@ -2562,36 +2589,36 @@ h3 {
     <!-- FAQ accordion -->
     <div class="faq-list">
       <details class="faq-item" open>
-        <summary>What is TopLive?</summary>
-        <p>TopLive is a social platform built around live video. Watch people share their hobbies and passions in real time, join the chat, or go live yourself — it's a community for both viewers and creators.</p>
+        <summary data-i18n="faq_q1">What is TopLive?</summary>
+        <p data-i18n="faq_a1">TopLive is a social platform built around live video. Watch people share their hobbies and passions in real time, join the chat, or go live yourself — it's a community for both viewers and creators.</p>
       </details>
       <details class="faq-item">
-        <summary>How do I watch a live stream?</summary>
-        <p>Open TopLive, browse by topic or explore what's trending, and tap any stream to join. No account needed to watch.</p>
+        <summary data-i18n="faq_q2">How do I watch a live stream?</summary>
+        <p data-i18n="faq_a2">Open TopLive, browse by topic or explore what's trending, and tap any stream to join. No account needed to watch.</p>
       </details>
       <details class="faq-item">
-        <summary>Is TopLive free?</summary>
-        <p>Yes — watching and going live are both free.</p>
+        <summary data-i18n="faq_q3">Is TopLive free?</summary>
+        <p data-i18n="faq_a3">Yes — watching and going live are both free.</p>
       </details>
       <details class="faq-item">
-        <summary>How do I find streams I'll like?</summary>
-        <p>Browse by topic, follow people whose content you enjoy, or let TopLive suggest streams based on what you watch.</p>
+        <summary data-i18n="faq_q4">How do I find streams I'll like?</summary>
+        <p data-i18n="faq_a4">Browse by topic, follow people whose content you enjoy, or let TopLive suggest streams based on what you watch.</p>
       </details>
       <details class="faq-item">
-        <summary>What devices are supported?</summary>
-        <p>TopLive works on iOS, Android, and any modern desktop browser — your account follows you across all of them.</p>
+        <summary data-i18n="faq_q5">What devices are supported?</summary>
+        <p data-i18n="faq_a5">TopLive works on iOS, Android, and any modern desktop browser — your account follows you across all of them.</p>
       </details>
       <details class="faq-item">
-        <summary>How is my privacy protected?</summary>
-        <p>You control who sees you, who can message you, and what appears in your feed. Sensitive data is encrypted, and we never sell personal information to third parties.</p>
+        <summary data-i18n="faq_q6">How is my privacy protected?</summary>
+        <p data-i18n="faq_a6">You control who sees you, who can message you, and what appears in your feed. Sensitive data is encrypted, and we never sell personal information to third parties.</p>
       </details>
       <details class="faq-item">
-        <summary>How is the platform moderated?</summary>
-        <p>A combination of active human moderators, automated systems for the obvious stuff, and clear community standards. Reports are reviewed within minutes during peak hours.</p>
+        <summary data-i18n="faq_q7">How is the platform moderated?</summary>
+        <p data-i18n="faq_a7">A combination of active human moderators, automated systems for the obvious stuff, and clear community standards. Reports are reviewed within minutes during peak hours.</p>
       </details>
       <details class="faq-item">
-        <summary>Can I go live too?</summary>
-        <p>Absolutely. Going live takes seconds — just tap the Live button, choose your topic, and start sharing. No experience needed.</p>
+        <summary data-i18n="faq_q8">Can I go live too?</summary>
+        <p data-i18n="faq_a8">Absolutely. Going live takes seconds — just tap the Live button, choose your topic, and start sharing. No experience needed.</p>
       </details>
     </div>
   </div>
@@ -2663,10 +2690,10 @@ h3 {
     </div>
     <div class="final-cta-overlay"></div>
     <div class="final-cta-content">
-      <span class="eyebrow glow">Join the moment</span>
-      <h2>Ready to find your people?</h2>
-      <p>Whether you're here to watch, chat, or share — there's a place for you on TopLive. Join thousands of real people, live right now.</p>
-      <button class="btn btn-primary" style="padding: 18px 36px; font-size: 16px;">Join TopLive</button>
+      <span class="eyebrow glow" data-i18n="fcta_eyebrow">Join the moment</span>
+      <h2 data-i18n="fcta_title">Ready to find your people?</h2>
+      <p data-i18n="fcta_desc">Whether you're here to watch, chat, or share — there's a place for you on TopLive. Join thousands of real people, live right now.</p>
+      <button class="btn btn-primary" style="padding: 18px 36px; font-size: 16px;" data-i18n="cta_join">Join TopLive</button>
     </div>
   </div>
 </section>
@@ -2682,39 +2709,39 @@ h3 {
           <img src="logo-mark.png" alt="">
           TopLive
         </a>
-        <p>The social platform built around live video. Watch, chat, or go live — it's a community for everyone.</p>
+        <p data-i18n="foot_desc">The social platform built around live video. Watch, chat, or go live — it's a community for everyone.</p>
       </div>
       <div class="footer-col">
-        <h5>Safety</h5>
+        <h5 data-i18n="foot_safety">Safety</h5>
         <ul>
-          <li><a href="#">Community Guidelines</a></li>
-          <li><a href="#">Stream Rules</a></li>
-          <li><a href="#">Reports &amp; Complaints</a></li>
+          <li><a href="#" data-i18n="foot_guidelines">Community Guidelines</a></li>
+          <li><a href="#" data-i18n="foot_streamrules">Stream Rules</a></li>
+          <li><a href="#" data-i18n="foot_reports">Reports &amp; Complaints</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Legal terms</h5>
+        <h5 data-i18n="foot_legal">Legal terms</h5>
         <ul>
-          <li><a href="#">Terms of Use</a></li>
-          <li><a href="#">Billing and Refund Policy</a></li>
+          <li><a href="#" data-i18n="foot_terms">Terms of Use</a></li>
+          <li><a href="#" data-i18n="foot_billing">Billing and Refund Policy</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Privacy info</h5>
+        <h5 data-i18n="foot_privacy">Privacy info</h5>
         <ul>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#" data-i18n="foot_privacypolicy">Privacy Policy</a></li>
+          <li><a href="#" data-i18n="foot_cookie">Cookie Policy</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Support</h5>
+        <h5 data-i18n="foot_support">Support</h5>
         <ul>
           <li><a href="mailto:support@toplive.com">support@toplive.com</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>All Rights Reserved, 2026 TopLive. Company legal address.</span>
+      <span data-i18n="foot_bottom">All Rights Reserved, 2026 TopLive. Company legal address.</span>
     </div>
   </div>
 </footer>
@@ -2746,12 +2773,42 @@ document.querySelectorAll('.float-card').forEach((el, i) => {
   ioCards.observe(el);
 });
 
-// Language switcher (top nav)
+// Language switcher + i18n engine
 (() => {
   const switcher = document.querySelector('.lang-switcher');
   if (!switcher) return;
   const trigger = switcher.querySelector('.lang-trigger');
   const current = switcher.querySelector('.lang-current');
+  const I18N = window.I18N || {};
+  const RTL = ['ar', 'he'];
+  const STORAGE_KEY = 'toplive_lang';
+
+  // Map UI code (e.g. "ZH-TW") to dictionary key (e.g. "zh-tw")
+  function dictKey(code) { return String(code).toLowerCase(); }
+
+  function applyLang(code) {
+    const key = dictKey(code);
+    const dict = I18N[key] || I18N.en;
+    if (!dict) return;
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      if (dict[k] != null) el.textContent = dict[k];
+    });
+
+    // Direction + lang attributes
+    const html = document.documentElement;
+    html.setAttribute('lang', key);
+    html.setAttribute('dir', RTL.includes(key) ? 'rtl' : 'ltr');
+
+    // UI state
+    current.textContent = code;
+    switcher.querySelectorAll('.lang-option').forEach(o => {
+      o.classList.toggle('active', o.dataset.code === code);
+    });
+
+    try { localStorage.setItem(STORAGE_KEY, code); } catch (e) {}
+  }
 
   trigger.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -2761,9 +2818,7 @@ document.querySelectorAll('.float-card').forEach((el, i) => {
 
   switcher.querySelectorAll('.lang-option').forEach(opt => {
     opt.addEventListener('click', () => {
-      switcher.querySelectorAll('.lang-option').forEach(o => o.classList.remove('active'));
-      opt.classList.add('active');
-      current.textContent = opt.dataset.code;
+      applyLang(opt.dataset.code);
       switcher.classList.remove('open');
       trigger.setAttribute('aria-expanded', 'false');
     });
@@ -2781,6 +2836,11 @@ document.querySelectorAll('.float-card').forEach((el, i) => {
       trigger.setAttribute('aria-expanded', 'false');
     }
   });
+
+  // Restore saved language on load
+  let saved = null;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+  if (saved && I18N[dictKey(saved)]) applyLang(saved);
 })();
 
 // Hero video carousel — 5 tiles rotate through 5 slots every 5s
