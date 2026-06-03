@@ -1110,7 +1110,7 @@ h3 {
 }
 .why-progress-fill.run {
   width: 100%;
-  transition: width 3s linear;
+  transition: width 6s linear;
 }
 
 @media (max-width: 880px) {
@@ -1215,56 +1215,47 @@ h3 {
   max-width: 380px;
 }
 .how-step-mock {
-  height: 460px;
-  width: 220px;
-  border-radius: 32px;
-  background: #000;
-  padding: 8px;
+  height: 400px;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 28px;
   position: relative;
   overflow: hidden;
   margin-left: auto;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
-.how-step-mock::before {
-  content: '';
+.how-step-photo {
   position: absolute;
-  top: 14px; left: 50%;
-  transform: translateX(-50%);
-  width: 72px; height: 20px;
-  background: #000;
-  border-radius: 100px;
-  z-index: 5;
-}
-.how-step-img { background: #000; }
-.how-step-img > img {
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 24px;
   display: block;
 }
-.how-step-stack { background: #000; }
-.how-step-stack .mock-bg {
+.how-step-mock::after {
+  content: '';
   position: absolute;
-  inset: 8px;
-  width: calc(100% - 16px);
-  height: calc(100% - 16px);
-  object-fit: cover;
-  border-radius: 24px;
-  filter: brightness(0.7);
-  display: block;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 10, 18, 0.12) 0%, transparent 38%, rgba(10, 10, 18, 0.5) 100%);
+  z-index: 1;
 }
-.how-step-stack .mock-sheet {
+.how-step-emoji {
   position: absolute;
-  bottom: 8px; left: 8px; right: 8px;
-  width: calc(100% - 16px);
-  height: 76%;
-  object-fit: cover;
-  object-position: top center;
-  border-radius: 20px 20px 24px 24px;
-  display: block;
-  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.6);
-  z-index: 4;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
 }
 
 /* Mini phone mock screens */
@@ -1692,7 +1683,7 @@ h3 {
   opacity: 1;
 }
 .pro-tab.active .icon-progress.run {
-  animation: traceIconBox 3s linear forwards;
+  animation: traceIconBox 6s linear forwards;
 }
 @keyframes traceIconBox {
   from { --trace-progress: 0; }
@@ -2222,7 +2213,7 @@ h3 {
         </div>
         <div class="hero-counter">
           <span class="hero-counter-dot"></span>
-          <strong class="live-counter-val">40,046</strong> <span data-i18n="hero_counter">people live right now</span>
+          <strong class="live-counter-val">16,190</strong> <span data-i18n="hero_counter">online users now</span>
         </div>
       </div>
 
@@ -2276,8 +2267,8 @@ h3 {
       </div>
       <div class="stats-block-right">
         <div class="stat-line">
-          <div class="stat-num" id="live-counter">40,046</div>
-          <div class="stat-label" data-i18n="stats_live">Live right now</div>
+          <div class="stat-num" id="live-counter">16,190</div>
+          <div class="stat-label" data-i18n="stats_live">Online users now</div>
         </div>
         <div class="stat-line">
           <div class="stat-num">4.2<span class="unit accent">M</span></div>
@@ -2323,7 +2314,7 @@ h3 {
         <div class="why-slide-overlay"></div>
         <div class="why-slide-text">
           <h3 data-i18n="why_s3_t">Live, not edited.</h3>
-          <p data-i18n="why_s3_d">No filters, no scripts. Just real people sharing real moments as they happen — the kind you'd never catch on a recorded feed.</p>
+          <p data-i18n="why_s3_d">Just real people sharing real moments as they happen — the kind you'd never catch on a recorded feed.</p>
         </div>
       </div>
       <div class="why-slide" data-slide="3">
@@ -2364,10 +2355,11 @@ h3 {
         <div class="how-num">1</div>
         <div class="how-step-text">
           <h3 data-i18n="how_1_t">Join in seconds</h3>
-          <p data-i18n="how_1_d">One screen, one tap. Pick a username, add a photo if you want, and you're in. No profile setup ritual, no friend-import dance.</p>
+          <p data-i18n="how_1_d">One tap to sign up. Add a profile photo to start streaming, and you're ready to go in under a minute.</p>
         </div>
-        <div class="how-step-mock how-step-img">
-          <img src="step-1-signin.png" alt="">
+        <div class="how-step-mock">
+          <img class="how-step-photo" src="person-2.jpg" alt="">
+          <div class="how-step-emoji">✨</div>
         </div>
       </div>
 
@@ -2378,9 +2370,9 @@ h3 {
           <h3 data-i18n="how_2_t">Choose what interests you</h3>
           <p data-i18n="how_2_d">Pick a few topics — travel, music, cooking, gaming — and we'll surface streams worth your time. No following anyone, no algorithm to feed.</p>
         </div>
-        <div class="how-step-mock how-step-img how-step-stack">
-          <img src="step-1-signin.png" alt="" class="mock-bg">
-          <img src="step-2-interests.png" alt="" class="mock-sheet">
+        <div class="how-step-mock">
+          <img class="how-step-photo" src="un-1.jpg" alt="">
+          <div class="how-step-emoji">🧭</div>
         </div>
       </div>
 
@@ -2391,8 +2383,9 @@ h3 {
           <h3 data-i18n="how_3_t">Watch, chat, or go live</h3>
           <p data-i18n="how_3_d">Drop into a stream and start chatting. Or hit the Live button, pick your topic, and start sharing — no audience required to begin.</p>
         </div>
-        <div class="how-step-mock how-step-img">
-          <img src="step-3-stream.png" alt="">
+        <div class="how-step-mock">
+          <img class="how-step-photo" src="group-3.jpg" alt="">
+          <div class="how-step-emoji">💬</div>
         </div>
       </div>
 
@@ -2594,7 +2587,7 @@ h3 {
       </details>
       <details class="faq-item">
         <summary data-i18n="faq_q2">How do I watch a live stream?</summary>
-        <p data-i18n="faq_a2">Open TopLive, browse by topic or explore what's trending, and tap any stream to join. No account needed to watch.</p>
+        <p data-i18n="faq_a2">Open TopLive, browse by topic or explore what's trending, and tap any stream to join.</p>
       </details>
       <details class="faq-item">
         <summary data-i18n="faq_q3">Is TopLive free?</summary>
@@ -2606,7 +2599,7 @@ h3 {
       </details>
       <details class="faq-item">
         <summary data-i18n="faq_q5">What devices are supported?</summary>
-        <p data-i18n="faq_a5">TopLive works on iOS, Android, and any modern desktop browser — your account follows you across all of them.</p>
+        <p data-i18n="faq_a5">TopLive works on iOS and in any modern web browser — your account stays in sync across both.</p>
       </details>
       <details class="faq-item">
         <summary data-i18n="faq_q6">How is my privacy protected?</summary>
@@ -2924,7 +2917,7 @@ document.querySelectorAll('.float-card').forEach((el, i) => {
   function startTimer() {
     stopTimer();
     restartActiveBar();
-    timer = setInterval(() => show(idx + 1), 3000);
+    timer = setInterval(() => show(idx + 1), 6000);
   }
   function stopTimer() {
     if (timer) { clearInterval(timer); timer = null; }
@@ -2949,7 +2942,7 @@ document.querySelectorAll('.float-card').forEach((el, i) => {
   const bigEl = document.getElementById('live-counter');
   const pillEls = document.querySelectorAll('.live-counter-val');
   if (!bigEl && !pillEls.length) return;
-  let val = 40046;
+  let val = 16190;
   let timer = null;
 
   function setVal(v) {
@@ -3035,7 +3028,7 @@ document.querySelectorAll('.float-card').forEach((el, i) => {
   function startTimer() {
     stopTimer();
     restartProgress();
-    timer = setInterval(() => show(idx + 1), 3000);
+    timer = setInterval(() => show(idx + 1), 6000);
   }
   function stopTimer() {
     if (timer) { clearInterval(timer); timer = null; }
