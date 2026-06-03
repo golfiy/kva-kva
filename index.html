@@ -1215,47 +1215,33 @@ h3 {
   max-width: 380px;
 }
 .how-step-mock {
-  height: 400px;
+  height: 240px;
   width: 100%;
   max-width: 300px;
-  border-radius: 28px;
   position: relative;
-  overflow: hidden;
   margin-left: auto;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.06);
-}
-.how-step-photo {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.how-step-mock::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(10, 10, 18, 0.12) 0%, transparent 38%, rgba(10, 10, 18, 0.5) 100%);
-  z-index: 1;
-}
-.how-step-emoji {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 2;
-  width: 64px;
-  height: 64px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.22);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+.how-step-emoji {
+  position: relative;
+  z-index: 2;
+  font-size: 88px;
+  line-height: 1;
+  filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.45));
+}
+.how-step-emoji::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 220px;
+  height: 220px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(100, 69, 237, 0.22) 0%, transparent 65%);
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* Mini phone mock screens */
@@ -2358,7 +2344,6 @@ h3 {
           <p data-i18n="how_1_d">One tap to sign up. Add a profile photo to start streaming, and you're ready to go in under a minute.</p>
         </div>
         <div class="how-step-mock">
-          <img class="how-step-photo" src="person-2.jpg" alt="">
           <div class="how-step-emoji">✨</div>
         </div>
       </div>
@@ -2371,7 +2356,6 @@ h3 {
           <p data-i18n="how_2_d">Pick a few topics — travel, music, cooking, gaming — and we'll surface streams worth your time. No following anyone, no algorithm to feed.</p>
         </div>
         <div class="how-step-mock">
-          <img class="how-step-photo" src="un-1.jpg" alt="">
           <div class="how-step-emoji">🧭</div>
         </div>
       </div>
@@ -2384,7 +2368,6 @@ h3 {
           <p data-i18n="how_3_d">Drop into a stream and start chatting. Or hit the Live button, pick your topic, and start sharing — no audience required to begin.</p>
         </div>
         <div class="how-step-mock">
-          <img class="how-step-photo" src="group-3.jpg" alt="">
           <div class="how-step-emoji">💬</div>
         </div>
       </div>
