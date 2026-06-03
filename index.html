@@ -2199,7 +2199,7 @@ h3 {
         </div>
         <div class="hero-counter">
           <span class="hero-counter-dot"></span>
-          <strong class="live-counter-val">16,190</strong> <span data-i18n="hero_counter">online users now</span>
+          <strong class="live-counter-val">16,190</strong> <span data-i18n="hero_counter">online users</span>
         </div>
       </div>
 
@@ -2254,7 +2254,7 @@ h3 {
       <div class="stats-block-right">
         <div class="stat-line">
           <div class="stat-num" id="live-counter">16,190</div>
-          <div class="stat-label" data-i18n="stats_live">Online users now</div>
+          <div class="stat-label" data-i18n="stats_live">Online users</div>
         </div>
         <div class="stat-line">
           <div class="stat-num">4.2<span class="unit accent">M</span></div>
@@ -2918,71 +2918,6 @@ document.querySelectorAll('.float-card').forEach((el, i) => {
     }, { threshold: 0.3 });
     ioP.observe(stage);
   }
-})();
-
-// Live counter — increments by +1..+5 every 2-4s, syncs ALL elements
-(() => {
-  const bigEl = document.getElementById('live-counter');
-  const pillEls = document.querySelectorAll('.live-counter-val');
-  if (!bigEl && !pillEls.length) return;
-  let val = 16190;
-  let timer = null;
-
-  function setVal(v) {
-    const formatted = v.toLocaleString('en-US');
-    if (bigEl && bigEl.firstChild && bigEl.firstChild.nodeType === 3) {
-      bigEl.firstChild.nodeValue = formatted;
-    } else if (bigEl) {
-      bigEl.textContent = formatted;
-    }
-    pillEls.forEach(p => { p.textContent = formatted; });
-  }
-  setVal(val); // sync on init
-
-  function tick() {
-    const inc = Math.floor(Math.random() * 5) + 1; // +1..+5
-    val += inc;
-    setVal(val);
-    if (bigEl) {
-      // Bump animation on big number
-      bigEl.classList.remove('bump');
-      void bigEl.offsetWidth;
-      bigEl.classList.add('bump');
-      // Floating "+N" badge
-      const badge = document.createElement('span');
-      badge.className = 'bump-badge';
-      badge.textContent = '+' + inc;
-      bigEl.appendChild(badge);
-      requestAnimationFrame(() => badge.classList.add('show'));
-      setTimeout(() => badge.remove(), 1200);
-    }
-    // Subtle bump on pill counters (just brief color flash via class)
-    pillEls.forEach(p => {
-      p.classList.remove('pill-bump');
-      void p.offsetWidth;
-      p.classList.add('pill-bump');
-    });
-  }
-
-  function scheduleNext() {
-    timer = setTimeout(() => {
-      tick();
-      scheduleNext();
-    }, 1800 + Math.random() * 2200); // 1.8-4s
-  }
-
-  // Watch BOTH counters — start timer if ANY counter is visible
-  let visibleCount = 0;
-  const targets = [bigEl, ...pillEls].filter(Boolean);
-  const ioC = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) visibleCount++;
-      else visibleCount = Math.max(0, visibleCount - 1);
-    });
-    if (visibleCount > 0 && !timer) scheduleNext();
-    else if (visibleCount === 0 && timer) { clearTimeout(timer); timer = null; }
-  }, { threshold: 0.1 });
-  targets.forEach(t => ioC.observe(t));
 })();
 
 // Why-different spotlight switcher (auto-rotate 3s + click)
