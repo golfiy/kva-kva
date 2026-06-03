@@ -1215,33 +1215,71 @@ h3 {
   max-width: 380px;
 }
 .how-step-mock {
-  height: 240px;
+  height: 280px;
   width: 100%;
-  max-width: 300px;
+  max-width: 320px;
   position: relative;
   margin-left: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
-.how-step-emoji {
-  position: relative;
-  z-index: 2;
-  font-size: 88px;
-  line-height: 1;
-  filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.45));
+.emoji-stage {
+  position: absolute;
+  inset: 0;
 }
-.how-step-emoji::before {
+.emoji-stage::before {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 220px;
-  height: 220px;
+  width: 240px;
+  height: 240px;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(100, 69, 237, 0.22) 0%, transparent 65%);
-  z-index: -1;
+  background: radial-gradient(circle, rgba(100, 69, 237, 0.20) 0%, transparent 65%);
   pointer-events: none;
+}
+.emoji-item {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+  transition: transform .5s cubic-bezier(.22, .9, .25, 1);
+}
+/* Main emoji — large, centered */
+.emoji-main {
+  top: 50%;
+  left: 50%;
+  font-size: 84px;
+  line-height: 1;
+  z-index: 3;
+  filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.45));
+  transform: translate(-50%, -50%) translate(var(--tx, 0px), var(--ty, 0px));
+}
+/* Secondary mini emojis — smaller, on frosted chips */
+.emoji-mini {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 26px;
+  z-index: 2;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  transform: translate(var(--tx, 0px), var(--ty, 0px));
+}
+.emoji-mini.num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--primary);
+}
+
+@media (max-width: 880px) {
+  .how-step-mock { height: 200px; max-width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .emoji-item { transition: none; }
 }
 
 /* Mini phone mock screens */
@@ -2344,7 +2382,12 @@ h3 {
           <p data-i18n="how_1_d">One tap to sign up. Add a profile photo to start streaming, and you're ready to go in under a minute.</p>
         </div>
         <div class="how-step-mock">
-          <div class="how-step-emoji">✨</div>
+          <div class="emoji-stage">
+            <div class="emoji-item emoji-main" data-depth="0.5">✨</div>
+            <div class="emoji-item emoji-mini num" data-depth="2.4" style="top:14%; left:16%;">3</div>
+            <div class="emoji-item emoji-mini num" data-depth="2.0" style="top:8%; left:70%;">2</div>
+            <div class="emoji-item emoji-mini num" data-depth="2.8" style="top:74%; left:30%;">1</div>
+          </div>
         </div>
       </div>
 
@@ -2356,7 +2399,12 @@ h3 {
           <p data-i18n="how_2_d">Pick a few topics — travel, music, cooking, gaming — and we'll surface streams worth your time. No following anyone, no algorithm to feed.</p>
         </div>
         <div class="how-step-mock">
-          <div class="how-step-emoji">🧭</div>
+          <div class="emoji-stage">
+            <div class="emoji-item emoji-main" data-depth="0.5">🧭</div>
+            <div class="emoji-item emoji-mini" data-depth="2.6" style="top:10%; left:20%;">✈️</div>
+            <div class="emoji-item emoji-mini" data-depth="2.2" style="top:16%; left:74%;">🎵</div>
+            <div class="emoji-item emoji-mini" data-depth="3.0" style="top:76%; left:66%;">🎮</div>
+          </div>
         </div>
       </div>
 
@@ -2368,7 +2416,12 @@ h3 {
           <p data-i18n="how_3_d">Drop into a stream and start chatting. Or hit the Live button, pick your topic, and start sharing — no audience required to begin.</p>
         </div>
         <div class="how-step-mock">
-          <div class="how-step-emoji">💬</div>
+          <div class="emoji-stage">
+            <div class="emoji-item emoji-main" data-depth="0.5">💬</div>
+            <div class="emoji-item emoji-mini" data-depth="2.5" style="top:12%; left:22%;">📱</div>
+            <div class="emoji-item emoji-mini" data-depth="2.9" style="top:72%; left:24%;">🎥</div>
+            <div class="emoji-item emoji-mini" data-depth="2.2" style="top:70%; left:72%;">🔴</div>
+          </div>
         </div>
       </div>
 
@@ -2914,6 +2967,32 @@ document.querySelectorAll('.float-card').forEach((el, i) => {
     }, { threshold: 0.3 });
     ioP.observe(stage);
   }
+})();
+
+// How-it-works — parallax on emoji icons when hovering a step
+(() => {
+  const steps = document.querySelectorAll('.how-step');
+  if (!steps.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  steps.forEach(step => {
+    const items = step.querySelectorAll('.emoji-item');
+    if (!items.length) return;
+    step.addEventListener('mousemove', (e) => {
+      const r = step.getBoundingClientRect();
+      const cx = (e.clientX - r.left) / r.width - 0.5;   // -0.5..0.5
+      const cy = (e.clientY - r.top) / r.height - 0.5;
+      items.forEach(it => {
+        const d = parseFloat(it.dataset.depth) || 1;
+        it.style.setProperty('--tx', (cx * d * 18).toFixed(1) + 'px');
+        it.style.setProperty('--ty', (cy * d * 18).toFixed(1) + 'px');
+      });
+    });
+    step.addEventListener('mouseleave', () => {
+      items.forEach(it => {
+        it.style.setProperty('--tx', '0px');
+        it.style.setProperty('--ty', '0px');
+      });
+    });
+  });
 })();
 
 // Why-different spotlight switcher (auto-rotate 3s + click)
