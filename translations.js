@@ -116,7 +116,8 @@ window.I18N = {
     "foot_billing": "Billing and Refund Policy",
     "foot_privacypolicy": "Privacy Policy",
     "foot_cookie": "Cookie Policy",
-    "foot_bottom": "All Rights Reserved, 2026 TopLive. Company legal address."
+    "foot_bottom": "All Rights Reserved, 2026 TopLive. Company legal address.",
+    "nav_about": "About"
   },
   "ru": {
     "nav_discover": "Обзор",
@@ -230,7 +231,8 @@ window.I18N = {
     "foot_billing": "Оплата и возвраты",
     "foot_privacypolicy": "Политика приватности",
     "foot_cookie": "Политика cookie",
-    "foot_bottom": "Все права защищены, 2026 TopLive. Юридический адрес компании."
+    "foot_bottom": "Все права защищены, 2026 TopLive. Юридический адрес компании.",
+    "nav_about": "О нас"
   },
   "es": {
     "nav_discover": "Descubrir",
@@ -344,7 +346,8 @@ window.I18N = {
     "foot_billing": "Facturación y reembolsos",
     "foot_privacypolicy": "Política de privacidad",
     "foot_cookie": "Política de cookies",
-    "foot_bottom": "Todos los derechos reservados, 2026 TopLive. Domicilio legal de la empresa."
+    "foot_bottom": "Todos los derechos reservados, 2026 TopLive. Domicilio legal de la empresa.",
+    "nav_about": "Acerca de"
   },
   "fr": {
     "nav_discover": "Découvrir",
@@ -458,7 +461,8 @@ window.I18N = {
     "foot_billing": "Facturation et remboursements",
     "foot_privacypolicy": "Politique de confidentialité",
     "foot_cookie": "Politique de cookies",
-    "foot_bottom": "Tous droits réservés, 2026 TopLive. Adresse légale de l'entreprise."
+    "foot_bottom": "Tous droits réservés, 2026 TopLive. Adresse légale de l'entreprise.",
+    "nav_about": "À propos"
   },
   "de": {
     "nav_discover": "Entdecken",
@@ -572,7 +576,8 @@ window.I18N = {
     "foot_billing": "Zahlung & Rückerstattung",
     "foot_privacypolicy": "Datenschutzerklärung",
     "foot_cookie": "Cookie-Richtlinie",
-    "foot_bottom": "Alle Rechte vorbehalten, 2026 TopLive. Geschäftssitz des Unternehmens."
+    "foot_bottom": "Alle Rechte vorbehalten, 2026 TopLive. Geschäftssitz des Unternehmens.",
+    "nav_about": "Über uns"
   },
   "it": {
     "nav_discover": "Scopri",
@@ -686,7 +691,8 @@ window.I18N = {
     "foot_billing": "Fatturazione e rimborsi",
     "foot_privacypolicy": "Informativa sulla privacy",
     "foot_cookie": "Politica sui cookie",
-    "foot_bottom": "Tutti i diritti riservati, 2026 TopLive. Sede legale dell'azienda."
+    "foot_bottom": "Tutti i diritti riservati, 2026 TopLive. Sede legale dell'azienda.",
+    "nav_about": "Info"
   },
   "pt": {
     "nav_discover": "Descobrir",
@@ -800,7 +806,8 @@ window.I18N = {
     "foot_billing": "Cobrança e reembolso",
     "foot_privacypolicy": "Política de privacidade",
     "foot_cookie": "Política de cookies",
-    "foot_bottom": "Todos os direitos reservados, 2026 TopLive. Endereço legal da empresa."
+    "foot_bottom": "Todos os direitos reservados, 2026 TopLive. Endereço legal da empresa.",
+    "nav_about": "Sobre"
   },
   "pl": {
     "nav_discover": "Odkrywaj",
@@ -914,7 +921,8 @@ window.I18N = {
     "foot_billing": "Płatności i zwroty",
     "foot_privacypolicy": "Polityka prywatności",
     "foot_cookie": "Polityka plików cookie",
-    "foot_bottom": "Wszelkie prawa zastrzeżone, 2026 TopLive. Adres siedziby firmy."
+    "foot_bottom": "Wszelkie prawa zastrzeżone, 2026 TopLive. Adres siedziby firmy.",
+    "nav_about": "O nas"
   },
   "tr": {
     "nav_discover": "Keşfet",
@@ -1028,7 +1036,8 @@ window.I18N = {
     "foot_billing": "Faturalandırma ve iade",
     "foot_privacypolicy": "Gizlilik politikası",
     "foot_cookie": "Çerez politikası",
-    "foot_bottom": "Tüm hakları saklıdır, 2026 TopLive. Şirketin yasal adresi."
+    "foot_bottom": "Tüm hakları saklıdır, 2026 TopLive. Şirketin yasal adresi.",
+    "nav_about": "Hakkında"
   },
   "nl": {
     "nav_discover": "Ontdekken",
@@ -1142,7 +1151,8 @@ window.I18N = {
     "foot_billing": "Facturering en terugbetaling",
     "foot_privacypolicy": "Privacybeleid",
     "foot_cookie": "Cookiebeleid",
-    "foot_bottom": "Alle rechten voorbehouden, 2026 TopLive. Juridisch adres van het bedrijf."
+    "foot_bottom": "Alle rechten voorbehouden, 2026 TopLive. Juridisch adres van het bedrijf.",
+    "nav_about": "Over"
   },
   "uk": {
     "nav_discover": "Огляд",
@@ -1256,7 +1266,8 @@ window.I18N = {
     "foot_billing": "Оплата та повернення",
     "foot_privacypolicy": "Політика приватності",
     "foot_cookie": "Політика cookie",
-    "foot_bottom": "Усі права захищені, 2026 TopLive. Юридична адреса компанії."
+    "foot_bottom": "Усі права захищені, 2026 TopLive. Юридична адреса компанії.",
+    "nav_about": "Про нас"
   },
   "ar": {
     "nav_discover": "اكتشف",
@@ -1370,7 +1381,8 @@ window.I18N = {
     "foot_billing": "الفوترة والاسترداد",
     "foot_privacypolicy": "سياسة الخصوصية",
     "foot_cookie": "سياسة ملفات تعريف الارتباط",
-    "foot_bottom": "جميع الحقوق محفوظة، 2026 TopLive. العنوان القانوني للشركة."
+    "foot_bottom": "جميع الحقوق محفوظة، 2026 TopLive. العنوان القانوني للشركة.",
+    "nav_about": "حول"
   },
   "he": {
     "nav_discover": "גילוי",
@@ -1484,7 +1496,8 @@ window.I18N = {
     "foot_billing": "חיוב והחזרים",
     "foot_privacypolicy": "מדיניות פרטיות",
     "foot_cookie": "מדיניות קובצי Cookie",
-    "foot_bottom": "כל הזכויות שמורות, 2026 TopLive. הכתובת המשפטית של החברה."
+    "foot_bottom": "כל הזכויות שמורות, 2026 TopLive. הכתובת המשפטית של החברה.",
+    "nav_about": "אודות"
   },
   "hi": {
     "nav_discover": "खोजें",
@@ -1598,7 +1611,8 @@ window.I18N = {
     "foot_billing": "बिलिंग और रिफ़ंड",
     "foot_privacypolicy": "प्राइवेसी नीति",
     "foot_cookie": "कुकी नीति",
-    "foot_bottom": "सर्वाधिकार सुरक्षित, 2026 TopLive। कंपनी का कानूनी पता।"
+    "foot_bottom": "सर्वाधिकार सुरक्षित, 2026 TopLive। कंपनी का कानूनी पता।",
+    "nav_about": "परिचय"
   },
   "id": {
     "nav_discover": "Jelajahi",
@@ -1712,7 +1726,8 @@ window.I18N = {
     "foot_billing": "Penagihan & pengembalian dana",
     "foot_privacypolicy": "Kebijakan privasi",
     "foot_cookie": "Kebijakan cookie",
-    "foot_bottom": "Hak cipta dilindungi, 2026 TopLive. Alamat resmi perusahaan."
+    "foot_bottom": "Hak cipta dilindungi, 2026 TopLive. Alamat resmi perusahaan.",
+    "nav_about": "Tentang"
   },
   "vi": {
     "nav_discover": "Khám phá",
@@ -1826,7 +1841,8 @@ window.I18N = {
     "foot_billing": "Thanh toán & hoàn tiền",
     "foot_privacypolicy": "Chính sách quyền riêng tư",
     "foot_cookie": "Chính sách cookie",
-    "foot_bottom": "Bảo lưu mọi quyền, 2026 TopLive. Địa chỉ pháp lý của công ty."
+    "foot_bottom": "Bảo lưu mọi quyền, 2026 TopLive. Địa chỉ pháp lý của công ty.",
+    "nav_about": "Giới thiệu"
   },
   "fil": {
     "nav_discover": "Tuklasin",
@@ -1940,7 +1956,8 @@ window.I18N = {
     "foot_billing": "Pagsingil at refund",
     "foot_privacypolicy": "Patakaran sa privacy",
     "foot_cookie": "Patakaran sa cookie",
-    "foot_bottom": "Nakalaan ang lahat ng karapatan, 2026 TopLive. Legal na address ng kompanya."
+    "foot_bottom": "Nakalaan ang lahat ng karapatan, 2026 TopLive. Legal na address ng kompanya.",
+    "nav_about": "Tungkol"
   },
   "zh": {
     "nav_discover": "发现",
@@ -2054,7 +2071,8 @@ window.I18N = {
     "foot_billing": "计费与退款政策",
     "foot_privacypolicy": "隐私政策",
     "foot_cookie": "Cookie 政策",
-    "foot_bottom": "版权所有，2026 TopLive。公司法定地址。"
+    "foot_bottom": "版权所有，2026 TopLive。公司法定地址。",
+    "nav_about": "关于"
   },
   "zh-tw": {
     "nav_discover": "探索",
@@ -2168,7 +2186,8 @@ window.I18N = {
     "foot_billing": "計費與退款政策",
     "foot_privacypolicy": "隱私政策",
     "foot_cookie": "Cookie 政策",
-    "foot_bottom": "版權所有，2026 TopLive。公司法定地址。"
+    "foot_bottom": "版權所有，2026 TopLive。公司法定地址。",
+    "nav_about": "關於"
   },
   "ja": {
     "nav_discover": "見つける",
@@ -2282,7 +2301,8 @@ window.I18N = {
     "foot_billing": "請求と返金ポリシー",
     "foot_privacypolicy": "プライバシーポリシー",
     "foot_cookie": "Cookie ポリシー",
-    "foot_bottom": "All Rights Reserved, 2026 TopLive. 会社の法的住所。"
+    "foot_bottom": "All Rights Reserved, 2026 TopLive. 会社の法的住所。",
+    "nav_about": "概要"
   },
   "ko": {
     "nav_discover": "발견",
@@ -2396,7 +2416,8 @@ window.I18N = {
     "foot_billing": "결제 및 환불 정책",
     "foot_privacypolicy": "개인정보 처리방침",
     "foot_cookie": "쿠키 정책",
-    "foot_bottom": "All Rights Reserved, 2026 TopLive. 회사 법적 주소."
+    "foot_bottom": "All Rights Reserved, 2026 TopLive. 회사 법적 주소.",
+    "nav_about": "소개"
   },
   "th": {
     "nav_discover": "ค้นพบ",
@@ -2510,6 +2531,7 @@ window.I18N = {
     "foot_billing": "การเรียกเก็บเงินและการคืนเงิน",
     "foot_privacypolicy": "นโยบายความเป็นส่วนตัว",
     "foot_cookie": "นโยบายคุกกี้",
-    "foot_bottom": "สงวนลิขสิทธิ์ 2026 TopLive ที่อยู่ตามกฎหมายของบริษัท"
+    "foot_bottom": "สงวนลิขสิทธิ์ 2026 TopLive ที่อยู่ตามกฎหมายของบริษัท",
+    "nav_about": "เกี่ยวกับ"
   }
 };
