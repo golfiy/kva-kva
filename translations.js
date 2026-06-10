@@ -116,7 +116,7 @@ window.I18N = {
     "foot_billing": "Billing and Refund Policy",
     "foot_privacypolicy": "Privacy Policy",
     "foot_cookie": "Cookie Policy",
-    "foot_bottom": "All Rights Reserved, 2026 TopLive. Company legal address.",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "About"
   },
   "ru": {
@@ -231,7 +231,7 @@ window.I18N = {
     "foot_billing": "Оплата и возвраты",
     "foot_privacypolicy": "Политика приватности",
     "foot_cookie": "Политика cookie",
-    "foot_bottom": "Все права защищены, 2026 TopLive. Юридический адрес компании.",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "О нас"
   },
   "es": {
@@ -346,7 +346,7 @@ window.I18N = {
     "foot_billing": "Facturación y reembolsos",
     "foot_privacypolicy": "Política de privacidad",
     "foot_cookie": "Política de cookies",
-    "foot_bottom": "Todos los derechos reservados, 2026 TopLive. Domicilio legal de la empresa.",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "Acerca de"
   },
   "fr": {
@@ -461,7 +461,7 @@ window.I18N = {
     "foot_billing": "Facturation et remboursements",
     "foot_privacypolicy": "Politique de confidentialité",
     "foot_cookie": "Politique de cookies",
-    "foot_bottom": "Tous droits réservés, 2026 TopLive. Adresse légale de l'entreprise.",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "À propos"
   },
   "de": {
@@ -576,7 +576,7 @@ window.I18N = {
     "foot_billing": "Zahlung & Rückerstattung",
     "foot_privacypolicy": "Datenschutzerklärung",
     "foot_cookie": "Cookie-Richtlinie",
-    "foot_bottom": "Alle Rechte vorbehalten, 2026 TopLive. Geschäftssitz des Unternehmens.",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "Über uns"
   },
   "it": {
@@ -691,7 +691,7 @@ window.I18N = {
     "foot_billing": "Fatturazione e rimborsi",
     "foot_privacypolicy": "Informativa sulla privacy",
     "foot_cookie": "Politica sui cookie",
-    "foot_bottom": "Tutti i diritti riservati, 2026 TopLive. Sede legale dell'azienda.",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "Info"
   },
   "pt": {
@@ -806,7 +806,7 @@ window.I18N = {
     "foot_billing": "Cobrança e reembolso",
     "foot_privacypolicy": "Política de privacidade",
     "foot_cookie": "Política de cookies",
-    "foot_bottom": "Todos os direitos reservados, 2026 TopLive. Endereço legal da empresa.",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "Sobre"
   },
   "pl": {
@@ -921,7 +921,7 @@ window.I18N = {
     "foot_billing": "Płatności i zwroty",
     "foot_privacypolicy": "Polityka prywatności",
     "foot_cookie": "Polityka plików cookie",
-    "foot_bottom": "Wszelkie prawa zastrzeżone, 2026 TopLive. Adres siedziby firmy.",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "O nas"
   },
   "tr": {
@@ -1036,7 +1036,7 @@ window.I18N = {
     "foot_billing": "Faturalandırma ve iade",
     "foot_privacypolicy": "Gizlilik politikası",
     "foot_cookie": "Çerez politikası",
-    "foot_bottom": "Tüm hakları saklıdır, 2026 TopLive. Şirketin yasal adresi.",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "Hakkında"
   },
   "nl": {
@@ -1151,7 +1151,7 @@ window.I18N = {
     "foot_billing": "Facturering en terugbetaling",
     "foot_privacypolicy": "Privacybeleid",
     "foot_cookie": "Cookiebeleid",
-    "foot_bottom": "Alle rechten voorbehouden, 2026 TopLive. Juridisch adres van het bedrijf.",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "Over"
   },
   "uk": {
@@ -1266,7 +1266,7 @@ window.I18N = {
     "foot_billing": "Оплата та повернення",
     "foot_privacypolicy": "Політика приватності",
     "foot_cookie": "Політика cookie",
-    "foot_bottom": "Усі права захищені, 2026 TopLive. Юридична адреса компанії.",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "Про нас"
   },
   "ar": {
@@ -1381,7 +1381,7 @@ window.I18N = {
     "foot_billing": "الفوترة والاسترداد",
     "foot_privacypolicy": "سياسة الخصوصية",
     "foot_cookie": "سياسة ملفات تعريف الارتباط",
-    "foot_bottom": "جميع الحقوق محفوظة، 2026 TopLive. العنوان القانوني للشركة.",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "حول"
   },
   "he": {
@@ -1496,7 +1496,7 @@ window.I18N = {
     "foot_billing": "חיוב והחזרים",
     "foot_privacypolicy": "מדיניות פרטיות",
     "foot_cookie": "מדיניות קובצי Cookie",
-    "foot_bottom": "כל הזכויות שמורות, 2026 TopLive. הכתובת המשפטית של החברה.",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "אודות"
   },
   "hi": {
@@ -1611,7 +1611,7 @@ window.I18N = {
     "foot_billing": "बिलिंग और रिफ़ंड",
     "foot_privacypolicy": "प्राइवेसी नीति",
     "foot_cookie": "कुकी नीति",
-    "foot_bottom": "सर्वाधिकार सुरक्षित, 2026 TopLive। कंपनी का कानूनी पता।",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "परिचय"
   },
   "id": {
@@ -1726,7 +1726,7 @@ window.I18N = {
     "foot_billing": "Penagihan & pengembalian dana",
     "foot_privacypolicy": "Kebijakan privasi",
     "foot_cookie": "Kebijakan cookie",
-    "foot_bottom": "Hak cipta dilindungi, 2026 TopLive. Alamat resmi perusahaan.",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "Tentang"
   },
   "vi": {
@@ -1841,7 +1841,7 @@ window.I18N = {
     "foot_billing": "Thanh toán & hoàn tiền",
     "foot_privacypolicy": "Chính sách quyền riêng tư",
     "foot_cookie": "Chính sách cookie",
-    "foot_bottom": "Bảo lưu mọi quyền, 2026 TopLive. Địa chỉ pháp lý của công ty.",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "Giới thiệu"
   },
   "fil": {
@@ -1956,7 +1956,7 @@ window.I18N = {
     "foot_billing": "Pagsingil at refund",
     "foot_privacypolicy": "Patakaran sa privacy",
     "foot_cookie": "Patakaran sa cookie",
-    "foot_bottom": "Nakalaan ang lahat ng karapatan, 2026 TopLive. Legal na address ng kompanya.",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "Tungkol"
   },
   "zh": {
@@ -2071,7 +2071,7 @@ window.I18N = {
     "foot_billing": "计费与退款政策",
     "foot_privacypolicy": "隐私政策",
     "foot_cookie": "Cookie 政策",
-    "foot_bottom": "版权所有，2026 TopLive。公司法定地址。",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "关于"
   },
   "zh-tw": {
@@ -2186,7 +2186,7 @@ window.I18N = {
     "foot_billing": "計費與退款政策",
     "foot_privacypolicy": "隱私政策",
     "foot_cookie": "Cookie 政策",
-    "foot_bottom": "版權所有，2026 TopLive。公司法定地址。",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "關於"
   },
   "ja": {
@@ -2301,7 +2301,7 @@ window.I18N = {
     "foot_billing": "請求と返金ポリシー",
     "foot_privacypolicy": "プライバシーポリシー",
     "foot_cookie": "Cookie ポリシー",
-    "foot_bottom": "All Rights Reserved, 2026 TopLive. 会社の法的住所。",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "概要"
   },
   "ko": {
@@ -2416,7 +2416,7 @@ window.I18N = {
     "foot_billing": "결제 및 환불 정책",
     "foot_privacypolicy": "개인정보 처리방침",
     "foot_cookie": "쿠키 정책",
-    "foot_bottom": "All Rights Reserved, 2026 TopLive. 회사 법적 주소.",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "소개"
   },
   "th": {
@@ -2531,7 +2531,7 @@ window.I18N = {
     "foot_billing": "การเรียกเก็บเงินและการคืนเงิน",
     "foot_privacypolicy": "นโยบายความเป็นส่วนตัว",
     "foot_cookie": "นโยบายคุกกี้",
-    "foot_bottom": "สงวนลิขสิทธิ์ 2026 TopLive ที่อยู่ตามกฎหมายของบริษัท",
+    "foot_bottom": "All Rights Reserved, 2025 Aligosta Limited, Nikis 1, Anthoupoli, 2350, Nicosia, Cyprus.",
     "nav_about": "เกี่ยวกับ"
   }
 };
